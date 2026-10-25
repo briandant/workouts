@@ -1,0 +1,156 @@
+{
+  "id": "calisthenics-skill-builder",
+  "title": "Calisthenics Skill Builder",
+  "focus": "Strength",
+  "level": "Beginner",
+  "summary": "30-minute skill session: handstand, pull-up, dip and L-sit ladders. Starts at Level 1; each step's cue shows the next rungs. Move up after hitting every set in two sessions.",
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-up",
+      "steps": [
+        {
+          "id": "jumping-jacks-or-easy-bike",
+          "kind": "timed",
+          "name": "Jumping jacks or easy bike",
+          "duration": 60,
+          "cue": "Just get warm and breathing."
+        },
+        {
+          "id": "wrist-rocks",
+          "kind": "timed",
+          "name": "Wrist rocks",
+          "duration": 60,
+          "cue": "On hands and knees: rock forward and back palms flat, then fingers pointing toward knees, then on the backs of your hands."
+        },
+        {
+          "id": "arm-circles",
+          "kind": "timed",
+          "name": "Arm circles",
+          "duration": 30,
+          "cue": "Big circles, both directions."
+        },
+        {
+          "id": "band-pull-aparts",
+          "kind": "reps",
+          "name": "Band pull-aparts",
+          "reps": 10,
+          "cue": "Skip if no band. Squeeze shoulder blades together."
+        },
+        {
+          "id": "scapular-pull-ups",
+          "kind": "reps",
+          "name": "Scapular pull-ups",
+          "reps": 10,
+          "cue": "Hang with straight arms; pull shoulder blades down and back, then relax. Elbows never bend."
+        },
+        {
+          "id": "scapular-push-ups",
+          "kind": "reps",
+          "name": "Scapular push-ups",
+          "reps": 10,
+          "cue": "In a plank, let the chest sink between the shoulder blades, then push the floor away."
+        },
+        {
+          "id": "deep-squat-pry",
+          "kind": "timed",
+          "name": "Deep squat pry",
+          "duration": 45,
+          "cue": "Sit deep, elbows inside knees, gently shift side to side."
+        },
+        {
+          "id": "cat-cow",
+          "kind": "reps",
+          "name": "Cat-cow",
+          "reps": 5,
+          "cue": "Slow, full range through the spine."
+        },
+        {
+          "id": "hard-plank-hands-turned-out",
+          "kind": "timed",
+          "name": "Hard plank, hands turned out",
+          "duration": 20,
+          "cue": "Squeeze everything. Wakes the shoulders up for handstands."
+        }
+      ]
+    },
+    {
+      "id": "handstand-practice",
+      "name": "Handstand practice",
+      "rounds": 6,
+      "restBetweenRounds": 45,
+      "steps": [
+        {
+          "id": "wall-plank-hold-level-1",
+          "kind": "timed",
+          "name": "Wall plank hold (Level 1)",
+          "duration": 30,
+          "cue": "Hands on floor, feet on wall, hips 90°, arms locked, push the floor away. Ladder: 1 wall plank 30s → 2 chest-to-wall 30s → 3 chest-to-wall 60s + taps → 4 free 5s → 5 15s → 6 30s+"
+        }
+      ]
+    },
+    {
+      "id": "pull-dip-superset",
+      "name": "Pull + dip superset",
+      "rounds": 3,
+      "restBetweenRounds": 90,
+      "steps": [
+        {
+          "id": "active-dead-hang-pull-level-1",
+          "kind": "timed",
+          "name": "Active dead hang (Pull Level 1)",
+          "duration": 30,
+          "cue": "Shoulders pulled down, ribs in. Ladder: 1 hang 30s → 2 negatives 3×5 (5s down) → 3 band-assisted 3×8 → 4 strict 3×3–5 → 5 strict 3×8 → 6 strict 3×10+"
+        },
+        {
+          "id": "rest",
+          "kind": "rest",
+          "duration": 30
+        },
+        {
+          "id": "dip-support-hold-dip-level-1",
+          "kind": "timed",
+          "name": "Dip support hold (Dip Level 1)",
+          "duration": 30,
+          "cue": "Arms locked, shoulders down away from ears, body straight. Ladder: 1 support 30s → 2 negatives 3×5 (3–5s) → 3 band-assisted 3×5 → 4 strict 3×3–5 → 5 3×8 → 6 3×12+"
+        }
+      ]
+    },
+    {
+      "id": "l-sit",
+      "name": "L-sit",
+      "rounds": 4,
+      "restBetweenRounds": 45,
+      "steps": [
+        {
+          "id": "tuck-l-sit-level-1",
+          "kind": "timed",
+          "name": "Tuck L-sit (Level 1)",
+          "duration": 10,
+          "cue": "On dip bars or parallettes, knees tucked to chest, shoulders down. Feet may touch lightly. Ladder: 1 tuck 10s → 2 tuck 20s → 3 one leg out 10s/side → 4 full L 10s → 5 full L 20s+",
+          "video": "https://www.youtube.com/watch?v=H_iZG5-L_KI"
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-down",
+      "steps": [
+        {
+          "id": "relaxed-dead-hang",
+          "kind": "timed",
+          "name": "Relaxed dead hang",
+          "duration": 30,
+          "cue": "Let the shoulders open up."
+        },
+        {
+          "id": "deep-squat-hold",
+          "kind": "timed",
+          "name": "Deep squat hold",
+          "duration": 30,
+          "cue": "Breathe slowly through the nose."
+        }
+      ]
+    }
+  ]
+}
