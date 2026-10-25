@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-acd5d788-bb6e-4a3a-86a4-4116e860b9b7/styles.css">
+<script src="_ds/industry-acd5d788-bb6e-4a3a-86a4-4116e860b9b7/_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--color-bg)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-800)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;">
+
+<sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+<header class="nav" style="width:100%;max-width:1160px;margin:0 auto;padding:20px 24px 0;">
+<span class="nav-brand">Follow-along</span>
+<span style="font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent);">{{ countLabel }}</span>
+</header>
+<main style="width:100%;max-width:1160px;margin:0 auto;padding:24px 24px 72px;">
+<h1 style="font-size:clamp(44px,7vw,72px);text-transform:uppercase;letter-spacing:0;margin:0 0 32px;">Workouts</h1>
+<sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}"><p style="color:color-mix(in srgb,var(--color-text) 70%,transparent);">Loading workouts…</p></sc-if>
+<sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p>Couldn’t load workouts.js — {{ loadError }}</p></sc-if>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:32px;">
+<sc-for list="{{ workouts }}" as="w" hint-placeholder-count="4">
+<button class="card blueprint" onClick="{{ w.open }}" style="text-align:left;font:inherit;color:inherit;cursor:pointer;padding:22px;gap:10px;min-height:230px;background:transparent;" style-hover="background:color-mix(in srgb,var(--color-accent) 6%,transparent);border-color:var(--color-accent);">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<span class="card-kicker" style="font-size:11px;color:var(--color-accent-700);">{{ w.focus }}</span>
+<span class="card-title" style="font-size:30px;line-height:1;text-transform:uppercase;">{{ w.title }}</span>
+<span class="card-body" style="font-size:14px;opacity:1;color:color-mix(in srgb,var(--color-text) 78%,transparent);">{{ w.summary }}</span>
+<span style="display:flex;gap:2px;height:6px;margin-top:6px;">
+<sc-for list="{{ w.strip }}" as="g" hint-placeholder-count="12"><span style="flex-grow:{{ g.flex }};flex-basis:0;min-width:1px;background:{{ g.color }};"></span></sc-for>
+</span>
+<span class="card-meta" style="font-size:12px;gap:14px;color:color-mix(in srgb,var(--color-text) 70%,transparent);">
+<span style="display:flex;align-items:center;gap:5px;"><svg width="14" height="14" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>{{ w.durationLabel }}</span>
+<span>{{ w.stepLabel }}</span>
+<span>{{ w.level }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<header class="nav" style="width:100%;max-width:1160px;margin:0 auto;padding:20px 24px 0;">
+<button class="btn btn-ghost" onClick="{{ toList }}" style="font-size:15px;gap:4px;margin-left:-6px;"><svg width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="m15 18-6-6 6-6"></path></svg>All workouts</button>
+</header>
+<main style="width:100%;max-width:1160px;margin:0 auto;padding:24px 24px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:56px;align-items:start;">
+<section style="display:flex;flex-direction:column;gap:20px;">
+<div>
+<div class="card-kicker" style="font-size:11px;color:var(--color-accent-700);margin-bottom:8px;">{{ detail.focus }} · {{ detail.level }}</div>
+<h1 style="font-size:clamp(44px,7vw,76px);line-height:.95;text-transform:uppercase;letter-spacing:0;margin:0 0 14px;text-wrap:balance;">{{ detail.title }}</h1>
+<p style="font-size:17px;margin:0;max-width:44ch;text-wrap:pretty;">{{ detail.summary }}</p>
+</div>
+<div class="blueprint" style="display:grid;grid-template-columns:repeat(3,1fr);">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="padding:14px 16px;"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent);">Duration</div><div style="font-family:var(--font-heading);font-weight:600;font-size:34px;line-height:1.1;">{{ detail.durationLabel }}</div></div>
+<div style="padding:14px 16px;border-left:1px solid var(--color-divider);"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent);">Steps</div><div style="font-family:var(--font-heading);font-weight:600;font-size:34px;line-height:1.1;">{{ detail.stepCount }}</div></div>
+<div style="padding:14px 16px;border-left:1px solid var(--color-divider);"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent);">Blocks</div><div style="font-family:var(--font-heading);font-weight:600;font-size:34px;line-height:1.1;">{{ detail.blockCount }}</div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;">
+<div style="display:flex;gap:2px;height:10px;">
+<sc-for list="{{ detail.strip }}" as="g" hint-placeholder-count="12"><span style="flex-grow:{{ g.flex }};flex-basis:0;min-width:1px;background:{{ g.color }};"></span></sc-for>
+</div>
+<div style="display:flex;gap:16px;font-size:12px;color:color-mix(in srgb,var(--color-text) 70%,transparent);">
+<span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:var(--color-accent);"></span>Work</span>
+<span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:var(--color-neutral-300);"></span>Rest</span>
+</div>
+</div>
+<button class="btn btn-primary blueprint" onClick="{{ start }}" style="width:100%;padding:18px;font-size:22px;letter-spacing:.02em;text-transform:uppercase;gap:10px;margin-top:8px;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Start workout
+</button>
+</section>
+<section style="display:flex;flex-direction:column;gap:32px;">
+<sc-for list="{{ detail.blocks }}" as="b" hint-placeholder-count="2">
+<div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--color-text);">
+<h3 style="margin:0;text-transform:uppercase;font-size:24px;">{{ b.name }}</h3>
+<span style="font-size:13px;color:var(--color-accent-700);">{{ b.sub }}</span>
+</div>
+<sc-for list="{{ b.steps }}" as="s" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--color-divider);opacity:{{ s.opacity }};">
+<span style="font-size:12px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 70%,transparent);">{{ s.num }}</span>
+<div><div style="font-size:16px;font-weight:500;">{{ s.name }}</div><sc-if value="{{ s.hasCue }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent);">{{ s.cue }}</div></sc-if></div>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap;">{{ s.spec }}</span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isPlayer }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;min-height:100vh;display:flex;flex-direction:column;background:{{ tone.bg }};--color-text:{{ tone.text }};--color-divider:{{ tone.line }};--fill:{{ tone.fill }};color:var(--color-text);transition:background-color .35s ease;">
+<div style="display:flex;align-items:center;gap:12px;padding:14px 20px 12px;">
+<button class="btn btn-ghost btn-icon" onClick="{{ exit }}" aria-label="Exit workout" style="color:var(--color-text);"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:18px;text-transform:uppercase;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ p.title }}</span>
+<span style="font-size:13px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 72%,transparent);">{{ p.counter }}</span>
+<button class="btn btn-ghost btn-icon" onClick="{{ toggleSound }}" aria-label="Toggle sound" style="color:var(--color-text);">
+<sc-if value="{{ soundOn }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></sc-if>
+<sc-if value="{{ soundOff }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="22" x2="16" y1="9" y2="15"></line><line x1="16" x2="22" y1="9" y2="15"></line></svg></sc-if>
+</button>
+</div>
+<div style="padding:0 20px;display:flex;flex-direction:column;gap:6px;">
+<div style="display:flex;gap:2px;height:6px;">
+<sc-for list="{{ p.segs }}" as="g" hint-placeholder-count="20"><span style="flex-grow:{{ g.flex }};flex-basis:0;min-width:1px;position:relative;overflow:hidden;background:color-mix(in srgb,var(--color-text) 14%,transparent);"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ g.fill }};background:var(--fill);"></span></span></sc-for>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:12px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 72%,transparent);">
+<span>{{ p.elapsed }} elapsed</span><span>{{ p.left }} left</span>
+</div>
+</div>
+<main style="flex:1;width:100%;max-width:1240px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px 48px;align-items:center;">
+<sc-if value="{{ p.hasMedia }}" hint-placeholder-val="{{ false }}">
+<figure style="display:flex;flex-direction:column;gap:8px;">
+<div class="blueprint" style="width:100%;aspect-ratio:16/9;max-height:clamp(160px,36vh,480px);">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="duotone" style="position:absolute;inset:0;background:var(--color-accent-900);">{{ p.mediaEl }}</div>
+</div>
+<figcaption style="font-size:12px;margin:0;color:color-mix(in srgb,var(--color-text) 72%,transparent);">{{ p.demoCaption }}</figcaption>
+</figure>
+</sc-if>
+<section style="display:flex;flex-direction:column;gap:14px;min-width:0;">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;">
+<span class="tag tag-accent" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;">{{ p.kindLabel }}</span>
+<span style="font-size:14px;color:color-mix(in srgb,var(--color-text) 75%,transparent);">{{ p.context }}</span>
+</div>
+<h1 style="font-size:clamp(40px,6.4vw,84px);line-height:.95;text-transform:uppercase;letter-spacing:0;margin:0;text-wrap:balance;">{{ p.name }}</h1>
+<sc-if value="{{ p.timed }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:10px;">
+<div style="display:flex;align-items:baseline;gap:16px;">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:clamp(120px,20vw,240px);line-height:.85;font-variant-numeric:tabular-nums;letter-spacing:-.02em;opacity:{{ p.timerOpacity }};">{{ p.clock }}</span>
+<sc-if value="{{ isPaused }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 75%,transparent);">Paused</span></sc-if>
+</div>
+<div style="height:4px;background:color-mix(in srgb,var(--color-text) 14%,transparent);position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ p.stepFill }};background:var(--fill);"></span></div>
+</div>
+</sc-if>
+<sc-if value="{{ p.isReps }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;gap:14px;">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:clamp(120px,20vw,240px);line-height:.85;font-variant-numeric:tabular-nums;">{{ p.reps }}</span>
+<span style="display:flex;flex-direction:column;gap:2px;">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:28px;text-transform:uppercase;">{{ p.repUnit }}</span>
+<span style="font-size:13px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 72%,transparent);">{{ p.stopwatch }} on this step</span>
+</span>
+</div>
+</sc-if>
+<sc-if value="{{ p.hasCue }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;margin:0;max-width:46ch;color:color-mix(in srgb,var(--color-text) 80%,transparent);">{{ p.cue }}</p></sc-if>
+<div class="blueprint" style="display:flex;align-items:center;gap:14px;padding:12px 16px;margin-top:8px;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 72%,transparent);">Next</span>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:22px;text-transform:uppercase;flex:1;min-width:0;">{{ p.nextName }}</span>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:20px;font-variant-numeric:tabular-nums;">{{ p.nextSpec }}</span>
+</div>
+</section>
+</main>
+<div style="position:sticky;bottom:0;z-index:5;background:{{ tone.bg }};transition:background-color .35s ease;border-top:1px solid var(--color-divider);padding:14px 20px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;">
+<button class="btn btn-secondary" onClick="{{ back }}" aria-label="Previous step" style="width:56px;height:56px;padding:0;color:var(--color-text);"><svg width="22" height="22" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" x2="5" y1="19" y2="5"></line></svg></button>
+<sc-if value="{{ p.timed }}" hint-placeholder-val="{{ true }}">
+<button class="btn btn-primary blueprint" onClick="{{ togglePause }}" style="min-width:168px;height:56px;font-size:20px;text-transform:uppercase;gap:10px;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<sc-if value="{{ notPaused }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><rect x="14" y="4" width="4" height="16" rx="1"></rect><rect x="6" y="4" width="4" height="16" rx="1"></rect></svg></sc-if>
+<sc-if value="{{ isPaused }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></sc-if>
+{{ pauseLabel }}
+</button>
+</sc-if>
+<sc-if value="{{ p.isReps }}" hint-placeholder-val="{{ false }}">
+<button class="btn btn-primary blueprint" onClick="{{ done }}" style="min-width:168px;height:56px;font-size:20px;text-transform:uppercase;gap:10px;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<svg width="20" height="20" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M20 6 9 17l-5-5"></path></svg>Done
+</button>
+</sc-if>
+<button class="btn btn-secondary" onClick="{{ skip }}" aria-label="Skip step" style="width:56px;height:56px;padding:0;color:var(--color-text);"><svg width="22" height="22" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" x2="19" y1="5" y2="19"></line></svg></button>
+<button class="btn btn-secondary" onClick="{{ addRest }}" disabled="{{ noAddRest }}" style="height:56px;padding:0 16px;font-size:16px;gap:6px;color:var(--color-text);"><svg width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>10s rest</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+<main style="flex:1;min-height:100vh;display:grid;place-items:center;padding:24px;">
+<div class="blueprint" style="width:min(520px,100%);padding:40px 32px;display:flex;flex-direction:column;gap:24px;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div>
+<div class="card-kicker" style="font-size:11px;color:var(--color-accent-700);margin-bottom:8px;">Workout complete</div>
+<h1 style="font-size:clamp(40px,7vw,60px);line-height:.95;text-transform:uppercase;letter-spacing:0;margin:0;">{{ fin.title }}</h1>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
+<div style="padding:14px 0;"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent);">Time</div><div style="font-family:var(--font-heading);font-weight:600;font-size:40px;line-height:1.1;font-variant-numeric:tabular-nums;">{{ fin.time }}</div></div>
+<div style="padding:14px 16px;border-left:1px solid var(--color-divider);"><div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent);">Steps</div><div style="font-family:var(--font-heading);font-weight:600;font-size:40px;line-height:1.1;">{{ fin.steps }}</div></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+<button class="btn btn-primary blueprint" onClick="{{ toList }}" style="flex:1;height:48px;font-size:17px;text-transform:uppercase;">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Back to workouts</button>
+<button class="btn btn-secondary" onClick="{{ start }}" style="height:48px;padding:0 20px;font-size:17px;text-transform:uppercase;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>Again</button>
+</div>
+</div>
+</main>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;getReady&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:0,&quot;max&quot;:15,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Player&quot;},&quot;beeps&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Player&quot;},&quot;restTone&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Player&quot;},&quot;secondsPerRep&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:1,&quot;max&quot;:8,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Estimates&quot;}}">
+const KEY = 'followalong.v1';
+const fmt = (sec) => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); };
+const mins = (sec) => Math.max(1, Math.round(sec / 60)) + ' min';
+const pct = (x) => (Math.max(0, Math.min(1, x)) * 100).toFixed(2) + '%';
+
+function ytEmbed(url) {
+  let u; try { u = new URL(url, location.href); } catch (e) { return null; }
+  const h = u.hostname.replace(/^(www\.|m\.)/, '');
+  let id = null;
+  if (h === 'youtu.be') id = u.pathname.slice(1);
+  else if (/(^|\.)youtube(-nocookie)?\.com$/.test(h)) id = u.searchParams.get('v') || (u.pathname.match(/^\/(?:embed|shorts|live)\/([^/?]+)/) || [])[1];
+  if (!id) return null;
+  const t = u.searchParams.get('t') || u.searchParams.get('start');
+  const start = t ? (parseInt(t, 10) || 0) : 0;
+  return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&mute=1&loop=1&playlist=' + id + '&controls=0&modestbranding=1&rel=0&playsinline=1' + (start ? '&start=' + start : '');
+}
+
+class Component extends DCLogic {
+  state = { workouts: null, loadError: null, screen: 'list', wid: null, idx: 0, remaining: 0, stepElapsed: 0, elapsed: 0, paused: false, sound: true, finTime: 0, finSteps: 0 };
+  _c = {};
+
+  componentDidMount() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    import(new URL('workouts.js', location.href).href)
+      .then((m) => {
+        const workouts = m.default || m.workouts || [];
+        const next = { workouts, sound: this.props.beeps ?? true };
+        if (saved && workouts.some((w) => w.id === saved.wid)) {
+          Object.assign(next, { screen: saved.screen === 'done' ? 'detail' : saved.screen, wid: saved.wid, idx: saved.idx || 0, elapsed: saved.elapsed || 0, paused: true });
+          const st = this.flat(workouts.find((w) => w.id === saved.wid))[next.idx];
+          if (st) next.remaining = (st.duration || 0) * 1000;
+        }
+        this.setState(next);
+      })
+      .catch((e) => this.setState({ workouts: [], loadError: String(e.message || e) }));
+    this.last = performance.now();
+    this.timer = setInterval(() => this.tick(), 100);
+    this.onKey = (e) => {
+      if (this.state.screen !== 'player') return;
+      const st = this.cur();
+      if (e.code === 'Space') { e.preventDefault(); st && st.kind === 'reps' ? this.done() : this.togglePause(); }
+      else if (e.key === 'ArrowRight') this.goTo(this.state.idx + 1);
+      else if (e.key === 'ArrowLeft') this.goTo(this.state.idx - 1);
+      else if (e.key === 'Escape') this.setState({ screen: 'detail' });
+    };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('keydown', this.onKey); }
+  componentDidUpdate(_, prev) {
+    const s = this.state;
+    if (s.workouts && (prev.screen !== s.screen || prev.wid !== s.wid || prev.idx !== s.idx || prev.paused !== s.paused)) {
+      try { localStorage.setItem(KEY, JSON.stringify({ screen: s.screen, wid: s.wid, idx: s.idx, elapsed: s.elapsed })); } catch (e) {}
+    }
+  }
+
+  workout() { return (this.state.workouts || []).find((w) => w.id === this.state.wid); }
+  steps() { const w = this.workout(); return w ? this.flat(w) : []; }
+  cur() { return this.steps()[this.state.idx]; }
+
+  flat(w) {
+    const prep = this.props.getReady ?? 5;
+    const spr = this.props.secondsPerRep ?? 3;
+    const key = w.id + '|' + prep + '|' + spr;
+    if (this._c[key]) return this._c[key];
+    const out = [];
+    if (prep > 0) out.push({ kind: 'prep', name: 'Get ready', duration: prep, block: 'Starting' });
+    for (const b of w.blocks) {
+      const R = b.rounds || 1;
+      for (let r = 1; r <= R; r++) {
+        for (const st of b.steps) {
+          const ctx = { block: b.name, round: r, rounds: R };
+          if (st.rest != null && !st.name) { out.push({ kind: 'rest', name: 'Rest', duration: st.rest, ...ctx }); continue; }
+          const K = st.sets || 1;
+          for (let k = 1; k <= K; k++) {
+            out.push({ kind: st.reps ? 'reps' : 'work', name: st.name, reps: st.reps, duration: st.reps ? null : st.duration, perSide: st.perSide, cue: st.cue, video: st.video, set: k, sets: K, ...ctx });
+            if (k < K && st.rest) out.push({ kind: 'rest', name: 'Rest', duration: st.rest, ...ctx });
+          }
+        }
+        if (r < R && b.restBetweenRounds) out.push({ kind: 'rest', name: 'Rest', duration: b.restBetweenRounds, ...ctx0(b, r, R) });
+      }
+    }
+    function ctx0(b, r, R) { return { block: b.name, round: r, rounds: R }; }
+    out.forEach((x) => { x.est = x.kind === 'reps' ? x.reps * spr * (x.perSide ? 2 : 1) : x.duration; });
+    return (this._c[key] = out);
+  }
+
+  audio() {
+    try {
+      if (!this.ac) this.ac = new (window.AudioContext || window.webkitAudioContext)();
+      if (this.ac.state === 'suspended') this.ac.resume();
+    } catch (e) {}
+    return this.ac;
+  }
+  beep(freq, len) {
+    if (!this.state.sound) return;
+    const ac = this.audio(); if (!ac) return;
+    const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.25, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+    o.connect(g).connect(ac.destination); o.start(t); o.stop(t + len + 0.02);
+  }
+
+  tick() {
+    const now = performance.now(), dt = now - this.last; this.last = now;
+    const s = this.state;
+    if (s.screen !== 'player' || s.paused) return;
+    const st = this.cur(); if (!st) return;
+    if (st.kind === 'reps') { this.setState({ stepElapsed: s.stepElapsed + dt, elapsed: s.elapsed + dt }); return; }
+    const rem = s.remaining - dt;
+    const sec = Math.ceil(rem / 1000);
+    if (sec !== this.lastSec) { this.lastSec = sec; if (sec >= 1 && sec <= 3) this.beep(660, 0.12); }
+    if (rem <= 0) { this.beep(990, 0.4); this.setState({ elapsed: s.elapsed + dt }); this.goTo(s.idx + 1); }
+    else this.setState({ remaining: rem, elapsed: s.elapsed + dt });
+  }
+
+  goTo(i) {
+    const steps = this.steps();
+    i = Math.max(0, i);
+    if (i >= steps.length) {
+      this.setState((s) => ({ screen: 'done', finTime: s.elapsed, finSteps: steps.filter((x) => x.kind === 'work' || x.kind === 'reps').length }));
+      return;
+    }
+    const st = steps[i];
+    this.lastSec = Math.ceil(st.duration || 0);
+    this.setState({ idx: i, remaining: (st.duration || 0) * 1000, stepElapsed: 0 });
+  }
+  start = () => {
+    this.audio();
+    const st = this.steps()[0];
+    this.lastSec = st ? Math.ceil(st.duration || 0) : null;
+    this.setState({ screen: 'player', idx: 0, elapsed: 0, stepElapsed: 0, paused: false, remaining: st ? (st.duration || 0) * 1000 : 0 });
+  };
+  togglePause = () => { this.audio(); this.setState((s) => ({ paused: !s.paused })); };
+  done = () => { this.beep(990, 0.25); this.setState({ paused: false }); this.goTo(this.state.idx + 1); };
+
+  media(st) {
+    if (!st || !st.video) return null;
+    const fill = { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, objectFit: 'cover', filter: 'grayscale(1)', pointerEvents: 'none' };
+    const yt = ytEmbed(st.video);
+    if (yt) return React.createElement('iframe', { key: yt, src: yt, title: st.name, allow: 'autoplay; encrypted-media', style: fill });
+    return React.createElement('video', { key: st.video, src: st.video, autoPlay: true, muted: true, loop: true, playsInline: true, style: fill });
+  }
+  spec(x) {
+    if (!x) return '';
+    if (x.kind === 'reps') return '× ' + x.reps + (x.perSide ? ' / side' : '');
+    return fmt(x.duration) + (x.perSide ? ' / side' : '');
+  }
+
+  renderVals() {
+    const s = this.state, W = s.workouts || [];
+    const w = this.workout();
+    let screen = s.screen;
+    if (screen !== 'list' && !w) screen = 'list';
+    const restTone = this.props.restTone ?? true;
+    const stripOf = (steps) => steps.filter((x) => x.kind !== 'prep').map((x) => ({ flex: x.est, color: x.kind === 'rest' ? 'var(--color-neutral-300)' : 'var(--color-accent)' }));
+    const moves = (steps) => steps.filter((x) => x.kind === 'work' || x.kind === 'reps').length;
+    const total = (steps) => steps.reduce((a, x) => a + x.est, 0);
+    const toList = () => this.setState({ screen: 'list', paused: false });
+
+    const vals = {
+      isList: screen === 'list', isDetail: screen === 'detail', isPlayer: false, isDone: screen === 'done',
+      isLoading: !s.workouts, hasError: !!s.loadError, loadError: s.loadError,
+      countLabel: s.workouts ? W.length + ' workouts' : '',
+      workouts: W.map((x) => {
+        const st = this.flat(x);
+        return { id: x.id, title: x.title, focus: x.focus, level: x.level, summary: x.summary, durationLabel: mins(total(st)), stepLabel: moves(st) + ' steps', strip: stripOf(st), open: () => this.setState({ screen: 'detail', wid: x.id }) };
+      }),
+      toList, start: this.start,
+      soundOn: s.sound, soundOff: !s.sound,
+      toggleSound: () => { this.setState((p) => ({ sound: !p.sound })); this.audio(); },
+      isPaused: s.paused, notPaused: !s.paused, pauseLabel: s.paused ? 'Resume' : 'Pause',
+      togglePause: this.togglePause, done: this.done,
+      back: () => this.goTo(s.idx - 1), skip: () => this.goTo(s.idx + 1),
+      exit: () => this.setState({ screen: 'detail', paused: false }),
+      detail: {}, p: {}, tone: {}, fin: {}, noAddRest: true,
+      addRest: () => { const st = this.cur(); if (st && (st.kind === 'rest' || st.kind === 'prep')) { st.duration; this.setState((p) => ({ remaining: p.remaining + 10000 })); } },
+    };
+
+    if (w) {
+      const steps = this.flat(w);
+      const prepN = steps[0] && steps[0].kind === 'prep' ? 1 : 0;
+      vals.detail = {
+        title: w.title, focus: w.focus, level: w.level, summary: w.summary,
+        durationLabel: mins(total(steps)), stepCount: moves(steps), blockCount: w.blocks.length, strip: stripOf(steps),
+        blocks: w.blocks.map((b) => {
+          const R = b.rounds || 1;
+          let n = 0;
+          return {
+            name: b.name,
+            sub: R > 1 ? R + ' rounds' + (b.restBetweenRounds ? ' · ' + fmt(b.restBetweenRounds) + ' rest between' : '') : '',
+            steps: b.steps.map((st) => {
+              const isRest = st.rest != null && !st.name;
+              const side = st.perSide ? ' / side' : '';
+              let spec;
+              if (isRest) spec = fmt(st.rest);
+              else if (st.sets) spec = st.sets + ' × ' + (st.reps ? st.reps : fmt(st.duration)) + side;
+              else spec = st.reps ? '× ' + st.reps + side : fmt(st.duration) + side;
+              const cue = isRest ? '' : [st.sets && st.rest ? fmt(st.rest) + ' rest between sets' : '', st.cue || ''].filter(Boolean).join(' · ');
+              return { num: isRest ? '' : String(++n).padStart(2, '0'), name: isRest ? 'Rest' : st.name, spec, cue, hasCue: !!cue, opacity: isRest ? 0.6 : 1 };
+            }),
+          };
+        }),
+      };
+
+      const st = steps[s.idx];
+      if (screen === 'player' && st) {
+        vals.isPlayer = true;
+        const isRest = st.kind === 'rest' || st.kind === 'prep';
+        const dark = isRest && restTone;
+        vals.tone = dark
+          ? { bg: 'var(--color-accent-900)', text: 'var(--color-bg)', line: 'color-mix(in srgb, var(--color-bg) 22%, transparent)', fill: 'var(--color-accent-400)' }
+          : { bg: 'var(--color-bg)', text: 'inherit', line: 'inherit', fill: 'var(--color-accent)' };
+        vals.noAddRest = !isRest;
+        const timed = st.kind !== 'reps';
+        const nextWork = isRest ? steps.slice(s.idx + 1).find((x) => x.kind === 'work' || x.kind === 'reps') : st;
+        const nxt = steps[s.idx + 1];
+        const mediaEl = this.media(nextWork);
+        let left = timed ? s.remaining / 1000 : Math.max(0, st.est - s.stepElapsed / 1000);
+        for (let i = s.idx + 1; i < steps.length; i++) left += steps[i].est;
+        const ctx = [st.block, st.rounds > 1 ? 'Round ' + st.round + ' of ' + st.rounds : '', st.sets > 1 ? 'Set ' + st.set + ' of ' + st.sets : ''].filter(Boolean).join(' · ');
+        vals.p = {
+          title: w.title,
+          counter: (s.idx + 1) + ' / ' + steps.length,
+          elapsed: fmt(s.elapsed / 1000), left: '~' + fmt(left),
+          segs: steps.map((x, i) => ({ flex: x.est, fill: i < s.idx ? '100%' : i > s.idx ? '0%' : timed ? pct(1 - s.remaining / (x.duration * 1000)) : pct(s.stepElapsed / 1000 / x.est) })),
+          kindLabel: { prep: 'Get ready', rest: 'Rest', work: 'Work', reps: 'Reps' }[st.kind],
+          context: ctx,
+          name: st.kind === 'prep' ? (nextWork ? nextWork.name : 'Get ready') : st.name,
+          timed, isReps: !timed,
+          clock: fmt(Math.ceil(s.remaining / 1000)),
+          timerOpacity: s.paused ? 0.35 : 1,
+          stepFill: timed ? pct(1 - s.remaining / (st.duration * 1000)) : '0%',
+          reps: st.reps, repUnit: st.perSide ? 'reps / side' : 'reps',
+          stopwatch: fmt(s.stepElapsed / 1000),
+          cue: isRest ? '' : st.cue || '', hasCue: !isRest && !!st.cue,
+          hasMedia: !!mediaEl, mediaEl, demoName: nextWork ? nextWork.name : 'Finish',
+          demoCaption: isRest ? (nextWork ? 'Up next: ' + nextWork.name : 'Last step') : st.name,
+          nextName: nxt ? (nxt.kind === 'rest' ? 'Rest' : nxt.name) : 'Finish',
+          nextSpec: nxt ? this.spec(nxt) : '',
+        };
+      }
+      if (screen === 'done') vals.fin = { title: w.title, time: fmt(s.finTime / 1000), steps: s.finSteps };
+    }
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

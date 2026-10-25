@@ -1,0 +1,145 @@
+{
+  "id": "seven-minute",
+  "title": "Seven-Minute Circuit",
+  "focus": "HIIT",
+  "level": "All levels",
+  "summary": "Twelve bodyweight moves, 30 seconds on and 10 off.",
+  "blocks": [
+    {
+      "id": "main-set",
+      "name": "Main set",
+      "steps": [
+        {
+          "id": "jumping-jacks",
+          "kind": "timed",
+          "name": "Jumping jacks",
+          "duration": 30
+        },
+        {
+          "id": "rest",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "wall-sit",
+          "kind": "timed",
+          "name": "Wall sit",
+          "duration": 30,
+          "cue": "Thighs parallel, back flat on the wall."
+        },
+        {
+          "id": "rest-2",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "push-up",
+          "kind": "timed",
+          "name": "Push-up",
+          "duration": 30
+        },
+        {
+          "id": "rest-3",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "crunch",
+          "kind": "timed",
+          "name": "Crunch",
+          "duration": 30
+        },
+        {
+          "id": "rest-4",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "step-up",
+          "kind": "timed",
+          "name": "Step-up",
+          "duration": 30,
+          "cue": "Alternate legs each rep."
+        },
+        {
+          "id": "rest-5",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "squat",
+          "kind": "timed",
+          "name": "Squat",
+          "duration": 30
+        },
+        {
+          "id": "rest-6",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "triceps-dip",
+          "kind": "timed",
+          "name": "Triceps dip",
+          "duration": 30
+        },
+        {
+          "id": "rest-7",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "plank",
+          "kind": "timed",
+          "name": "Plank",
+          "duration": 30,
+          "cue": "Squeeze glutes; don’t let the hips sag."
+        },
+        {
+          "id": "rest-8",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "high-knees",
+          "kind": "timed",
+          "name": "High knees",
+          "duration": 30
+        },
+        {
+          "id": "rest-9",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "lunge",
+          "kind": "timed",
+          "name": "Lunge",
+          "duration": 30
+        },
+        {
+          "id": "rest-10",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "push-up-with-rotation",
+          "kind": "timed",
+          "name": "Push-up with rotation",
+          "duration": 30
+        },
+        {
+          "id": "rest-11",
+          "kind": "rest",
+          "duration": 10
+        },
+        {
+          "id": "side-plank",
+          "kind": "timed",
+          "name": "Side plank",
+          "duration": 30
+        }
+      ]
+    }
+  ]
+}

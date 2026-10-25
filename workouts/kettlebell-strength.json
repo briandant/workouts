@@ -1,0 +1,86 @@
+{
+  "id": "kettlebell-strength",
+  "title": "Kettlebell Strength",
+  "focus": "Strength",
+  "level": "Intermediate",
+  "summary": "Heavy sets with full recovery between them.",
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-up",
+      "steps": [
+        {
+          "id": "kettlebell-halo",
+          "kind": "reps",
+          "name": "Kettlebell halo",
+          "reps": 8,
+          "cue": "Each direction."
+        },
+        {
+          "id": "goblet-squat-hold",
+          "kind": "timed",
+          "name": "Goblet squat hold",
+          "duration": 30
+        },
+        {
+          "id": "hip-hinge-drill",
+          "kind": "reps",
+          "name": "Hip hinge drill",
+          "reps": 10
+        }
+      ]
+    },
+    {
+      "id": "main-set",
+      "name": "Main set",
+      "steps": [
+        {
+          "id": "goblet-squat",
+          "kind": "sets",
+          "name": "Goblet squat",
+          "sets": 4,
+          "reps": 8,
+          "rest": 90,
+          "cue": "Elbows inside knees, chest tall."
+        },
+        {
+          "id": "single-arm-row",
+          "kind": "sets",
+          "name": "Single-arm row",
+          "sets": 3,
+          "reps": 10,
+          "rest": 60,
+          "perSide": true
+        },
+        {
+          "id": "kettlebell-swing",
+          "kind": "sets",
+          "name": "Kettlebell swing",
+          "sets": 4,
+          "reps": 15,
+          "rest": 60,
+          "cue": "Snap the hips; the arms only guide the bell."
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-down",
+      "steps": [
+        {
+          "id": "couch-stretch",
+          "kind": "timed",
+          "name": "Couch stretch",
+          "duration": 45,
+          "perSide": true
+        },
+        {
+          "id": "child-s-pose",
+          "kind": "timed",
+          "name": "Child’s pose",
+          "duration": 60
+        }
+      ]
+    }
+  ]
+}

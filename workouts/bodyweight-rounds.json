@@ -1,0 +1,72 @@
+{
+  "id": "bodyweight-rounds",
+  "title": "Bodyweight Rounds",
+  "focus": "Circuit",
+  "level": "Beginner",
+  "summary": "Four rounds of push-ups, squats, sit-ups and a plank.",
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-up",
+      "steps": [
+        {
+          "id": "arm-circles",
+          "kind": "timed",
+          "name": "Arm circles",
+          "duration": 30
+        },
+        {
+          "id": "inchworm",
+          "kind": "reps",
+          "name": "Inchworm",
+          "reps": 5
+        }
+      ]
+    },
+    {
+      "id": "circuit",
+      "name": "Circuit",
+      "rounds": 4,
+      "restBetweenRounds": 60,
+      "steps": [
+        {
+          "id": "push-up",
+          "kind": "reps",
+          "name": "Push-up",
+          "reps": 10
+        },
+        {
+          "id": "air-squat",
+          "kind": "reps",
+          "name": "Air squat",
+          "reps": 15
+        },
+        {
+          "id": "sit-up",
+          "kind": "reps",
+          "name": "Sit-up",
+          "reps": 20
+        },
+        {
+          "id": "plank",
+          "kind": "timed",
+          "name": "Plank",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-down",
+      "steps": [
+        {
+          "id": "hamstring-stretch",
+          "kind": "timed",
+          "name": "Hamstring stretch",
+          "duration": 45,
+          "perSide": true
+        }
+      ]
+    }
+  ]
+}

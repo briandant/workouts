@@ -1,0 +1,48 @@
+{
+  "name": "workouts",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm -w @workouts/web run dev",
+    "build": "npm -w @workouts/web run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p packages/core && tsc --noEmit -p apps/mcp && tsc --noEmit -p apps/web",
+    "lint": "oxlint && node scripts/check-tokens.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "mcp": "tsx apps/mcp/src/server.ts",
+    "mcp:desktop-config": "node scripts/desktop-config.mjs",
+    "mcp:install-desktop": "node scripts/desktop-config.mjs --install",
+    "migrate-prototype": "tsx packages/core/scripts/migrate-prototype.ts"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "happy-dom": "^21.0.4",
+    "lucide-react": "^1.61.0",
+    "oxlint": "^1.16.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.5",
+    "vitest": "^4.1.12",
+    "zod": "^4.6.7"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "esbuild@0.25.12": true
+  }
+}
