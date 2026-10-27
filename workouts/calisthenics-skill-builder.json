@@ -1,9 +1,9 @@
 {
   "id": "calisthenics-skill-builder",
-  "title": "Calisthenics Skill Builder",
+  "title": "Calisthenics Skill Builder 1",
   "focus": "Strength",
   "level": "Beginner",
-  "summary": "30-minute skill session: wall-free handstand, pull-up, dip and L-sit ladders. Starts at Level 1; each cue shows the next rungs. Move up after hitting every set in two sessions.",
+  "summary": "30-minute skill session: wall-free handstand, pull-up, dip and L-sit ladders. Cues show the next rungs; move up after hitting every set in two sessions. Top rung done? Go to Skill Builder 2.",
   "equipment": [
     "Pull-up bar",
     "Parallettes or dip bars",
@@ -113,7 +113,7 @@
           "kind": "timed",
           "name": "Pike hold (Handstand Level 1)",
           "duration": 30,
-          "cue": "Hips high, shoulders over hands, push the floor away. Ladder: 1 pike 30s → 2 feet-up pike 30s → 3 crow 10s → 4 crow 30s → 5 tuck hops ×8 → 6 kick-ups ×8 → 7 free 5s → 8 free 15s → 9 free 30s+"
+          "cue": "Hips high, shoulders over hands, push the floor away. Ladder: 1 pike 30s → 2 pike 45s → 3 feet-up pike 20s → 4 feet-up pike 30s → 5 frog stand 10s → Skill Builder 2"
         }
       ]
     },
@@ -128,7 +128,7 @@
           "kind": "timed",
           "name": "Active dead hang (Pull Level 1)",
           "duration": 30,
-          "cue": "Shoulders pulled down, ribs in. Ladder: 1 hang 30s → 2 negatives 3×5 (5s down) → 3 band-assisted 3×8 → 4 strict 3×3–5 → 5 strict 3×8 → 6 strict 3×10+"
+          "cue": "Shoulders pulled down, ribs in. Ladder: 1 hang 30s → 2 hang 45s → 3 arch hang 8 reps (chest up, shoulder blades back) → 4 negatives 3×3 (5s down) → Skill Builder 2"
         },
         {
           "id": "rest",
@@ -140,7 +140,7 @@
           "kind": "timed",
           "name": "Dip support hold (Dip Level 1)",
           "duration": 30,
-          "cue": "Arms locked, shoulders down away from ears, body straight. Ladder: 1 support 30s → 2 negatives 3×5 (3–5s) → 3 band-assisted 3×5 → 4 strict 3×3–5 → 5 3×8 → 6 3×12+"
+          "cue": "Arms locked, shoulders down away from ears, body straight. Ladder: 1 support 30s → 2 support 45s → 3 negatives 3×3 (4s down) → Skill Builder 2"
         }
       ]
     },
@@ -151,11 +151,11 @@
       "restBetweenRounds": 45,
       "steps": [
         {
-          "id": "tuck-l-sit-level-1",
+          "id": "foot-supported-l-sit-level-1",
           "kind": "timed",
-          "name": "Tuck L-sit (Level 1)",
-          "duration": 10,
-          "cue": "On dip bars or parallettes, knees tucked to chest, shoulders down. Feet may touch lightly. Ladder: 1 tuck 10s → 2 tuck 20s → 3 one leg out 10s/side → 4 full L 10s → 5 full L 20s+",
+          "name": "Foot-supported L-sit (Level 1)",
+          "duration": 15,
+          "cue": "On parallettes or dip bars, heels on the floor, push down until your hips lift. Shoulders down. Ladder: 1 both feet 15s → 2 one foot 10s/side → 3 tuck 10s → 4 tuck 20s → Skill Builder 2",
           "video": "https://www.youtube.com/watch?v=H_iZG5-L_KI"
         }
       ]
