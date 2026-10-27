@@ -19,6 +19,10 @@ export const Focus = z.enum(FOCUSES);
 export const Level = z.enum(LEVELS);
 
 const Name = z.string().trim().min(1).max(80);
+const Equipment = z
+  .array(z.string().trim().min(1).max(60))
+  .max(12)
+  .describe('Items needed to do the workout, e.g. "Pull-up bar", "Resistance band (optional)". [] means none.');
 const Cue = z.string().trim().min(1).max(240).describe('Short form note shown under the step');
 const PerSide = z.boolean().describe('Do the movement on each side');
 const Video = z
@@ -63,6 +67,7 @@ export const Workout = z.strictObject({
   focus: Focus,
   level: Level,
   summary: z.string().trim().min(1).max(200),
+  equipment: Equipment.optional(),
   blocks: z.array(Block),
 });
 
@@ -95,5 +100,5 @@ export const BlockInput = z.strictObject({
 });
 export type BlockInput = z.infer<typeof BlockInput>;
 
-export const WorkoutMeta = Workout.pick({ title: true, focus: true, level: true, summary: true });
+export const WorkoutMeta = Workout.pick({ title: true, focus: true, level: true, summary: true, equipment: true });
 export type WorkoutMeta = z.infer<typeof WorkoutMeta>;

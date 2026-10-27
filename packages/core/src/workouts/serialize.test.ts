@@ -25,6 +25,11 @@ describe('toFileJson', () => {
     expect(text.split('\n')[1]).toBe('  "id": "bodyweight-rounds",');
   });
 
+  it('writes equipment after the summary and before the blocks', () => {
+    const text = toFileJson({ ...strength(), equipment: ['Kettlebell'] });
+    expect(text).toContain('"summary": "Heavy sets with full recovery between them.",\n  "equipment": [\n    "Kettlebell"\n  ],\n  "blocks"');
+  });
+
   it('is byte-stable through a parse and write', () => {
     const text = toFileJson(strength());
     expect(toFileJson(parseWorkoutFile(text))).toBe(text);

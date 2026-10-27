@@ -48,6 +48,25 @@ export function DetailPage() {
             <Stat label="Blocks" value={s.blocks} />
           </StatGrid>
 
+          {w.equipment && (
+            <section aria-labelledby="equipment" className="flex flex-col gap-2">
+              <h2 id="equipment" className="text-xs font-bold tracking-[0.16em] text-muted uppercase">
+                You’ll need
+              </h2>
+              {w.equipment.length ? (
+                <ul className="flex flex-wrap gap-2">
+                  {w.equipment.map((item) => (
+                    <li key={item} className="rounded-md border border-line px-3 py-1.5 text-sm font-medium">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm text-muted">No equipment, just some floor space.</p>
+              )}
+            </section>
+          )}
+
           <div className="flex flex-col gap-2">
             <Segments items={shape(w)} className="h-2.5" />
             <div className="flex gap-4 text-xs text-muted">

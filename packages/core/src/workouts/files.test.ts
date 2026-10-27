@@ -17,4 +17,9 @@ describe('workouts/*.json', () => {
     expect(`${w.id}.json`).toBe(f);
     expect(toFileJson(w)).toBe(text);
   });
+
+  it.each(files)('%s lists the equipment it needs ([] for none)', async (f) => {
+    const w = parseWorkoutFile(await readFile(join(dir, f), 'utf8'), `workouts/${f}`);
+    expect(w.equipment).toBeInstanceOf(Array);
+  });
 });

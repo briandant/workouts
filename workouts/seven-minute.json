@@ -4,6 +4,10 @@
   "focus": "HIIT",
   "level": "All levels",
   "summary": "Twelve bodyweight moves, 30 seconds on and 10 off.",
+  "equipment": [
+    "Wall",
+    "Sturdy chair or step"
+  ],
   "blocks": [
     {
       "id": "main-set",

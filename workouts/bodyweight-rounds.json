@@ -4,6 +4,9 @@
   "focus": "Circuit",
   "level": "Beginner",
   "summary": "Four rounds of push-ups, squats, sit-ups and a plank.",
+  "equipment": [
+    "Mat (optional)"
+  ],
   "blocks": [
     {
       "id": "warm-up",

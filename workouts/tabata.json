@@ -4,6 +4,7 @@
   "focus": "Intervals",
   "level": "Advanced",
   "summary": "Eight rounds of 20 seconds all-out, 10 seconds rest.",
+  "equipment": [],
   "blocks": [
     {
       "id": "warm-up",

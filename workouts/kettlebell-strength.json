@@ -4,6 +4,9 @@
   "focus": "Strength",
   "level": "Intermediate",
   "summary": "Heavy sets with full recovery between them.",
+  "equipment": [
+    "Kettlebell"
+  ],
   "blocks": [
     {
       "id": "warm-up",

@@ -1,7 +1,7 @@
 import { describeIssues, WorkoutError } from './errors.ts';
 import { Workout, type Block, type Step } from './model.ts';
 
-const WORKOUT_KEYS = ['id', 'title', 'focus', 'level', 'summary', 'blocks'] as const;
+const WORKOUT_KEYS = ['id', 'title', 'focus', 'level', 'summary', 'equipment', 'blocks'] as const;
 const BLOCK_KEYS = ['id', 'name', 'rounds', 'restBetweenRounds', 'steps'] as const;
 const STEP_KEYS = ['id', 'kind', 'name', 'sets', 'reps', 'duration', 'rest', 'perSide', 'cue', 'video'] as const;
 

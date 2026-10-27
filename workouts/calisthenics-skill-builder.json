@@ -3,7 +3,14 @@
   "title": "Calisthenics Skill Builder",
   "focus": "Strength",
   "level": "Beginner",
-  "summary": "30-minute skill session: handstand, pull-up, dip and L-sit ladders. Starts at Level 1; each step's cue shows the next rungs. Move up after hitting every set in two sessions.",
+  "summary": "30-minute skill session: wall-free handstand, pull-up, dip and L-sit ladders. Starts at Level 1; each cue shows the next rungs. Move up after hitting every set in two sessions.",
+  "equipment": [
+    "Pull-up bar",
+    "Parallettes or dip bars",
+    "Sturdy chair, step or couch",
+    "Resistance band",
+    "Mat or pillow (optional)"
+  ],
   "blocks": [
     {
       "id": "warm-up",
@@ -75,17 +82,38 @@
       ]
     },
     {
+      "id": "handstand-prep",
+      "name": "Handstand prep",
+      "steps": [
+        {
+          "id": "hollow-body-hold",
+          "kind": "timed",
+          "name": "Hollow body hold",
+          "duration": 30,
+          "cue": "Low back pressed down, arms by ears, ribs in, legs long. This is the handstand line, lying down. Bend the knees to make it easier."
+        },
+        {
+          "id": "cartwheel-bail",
+          "kind": "reps",
+          "name": "Cartwheel bail",
+          "reps": 3,
+          "perSide": true,
+          "cue": "From a lunge, hands down, kick up a little and turn out to one side, stepping down. Your exit with no wall: learn it before kick-ups."
+        }
+      ]
+    },
+    {
       "id": "handstand-practice",
       "name": "Handstand practice",
-      "rounds": 6,
+      "rounds": 5,
       "restBetweenRounds": 45,
       "steps": [
         {
-          "id": "wall-plank-hold-level-1",
+          "id": "pike-hold-handstand-level-1",
           "kind": "timed",
-          "name": "Wall plank hold (Level 1)",
+          "name": "Pike hold (Handstand Level 1)",
           "duration": 30,
-          "cue": "Hands on floor, feet on wall, hips 90°, arms locked, push the floor away. Ladder: 1 wall plank 30s → 2 chest-to-wall 30s → 3 chest-to-wall 60s + taps → 4 free 5s → 5 15s → 6 30s+"
+          "cue": "Hips high, shoulders over hands, push the floor away. Ladder: 1 pike 30s → 2 feet-up pike 30s → 3 crow 10s → 4 crow 30s → 5 tuck hops ×8 → 6 kick-ups ×8 → 7 free 5s → 8 free 15s → 9 free 30s+"
         }
       ]
     },

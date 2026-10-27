@@ -4,6 +4,9 @@
   "focus": "Mobility",
   "level": "All levels",
   "summary": "Slow timed holds for hips, spine and shoulders.",
+  "equipment": [
+    "Mat (optional)"
+  ],
   "blocks": [
     {
       "id": "flow",

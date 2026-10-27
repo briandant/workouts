@@ -40,6 +40,17 @@ describe('detail', () => {
     expect(screen.getByTestId('path')).toHaveTextContent('/w/kettlebell-strength/play');
   });
 
+  it('lists the equipment a workout needs', () => {
+    renderAt('/w/kettlebell-strength');
+    const needs = screen.getByRole('region', { name: /you.ll need/i });
+    expect(needs).toHaveTextContent('Kettlebell');
+  });
+
+  it('says when a workout needs no equipment', () => {
+    renderAt('/w/tabata');
+    expect(screen.getByRole('region', { name: /you.ll need/i })).toHaveTextContent(/no equipment/i);
+  });
+
   it('shows not found for an unknown workout', () => {
     renderAt('/w/nope');
     expect(screen.getByRole('heading', { name: 'Not found' })).toBeInTheDocument();
