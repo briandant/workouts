@@ -1,0 +1,43 @@
+{
+  "id": "cervical-pm",
+  "title": "Cervical PM",
+  "focus": "Recovery",
+  "level": "Beginner",
+  "summary": "Daily at bedtime. Releases the skull base and gently decompresses the neck after the day's loading. Stop if headache, dizziness or arm symptoms.",
+  "blocks": [
+    {
+      "id": "bedtime-release",
+      "name": "Bedtime Release",
+      "steps": [
+        {
+          "id": "suboccipital-release",
+          "kind": "timed",
+          "name": "Suboccipital Release",
+          "duration": 90,
+          "cue": "Lie on back, tennis balls or thumbs just under the skull base, either side of the spine. Let the head's weight rest on them; stay still and breathe. Stop if headache or dizziness."
+        },
+        {
+          "id": "gentle-neck-warm-up",
+          "kind": "timed",
+          "name": "Gentle Neck Warm-Up",
+          "duration": 30,
+          "cue": "Slow, small nods, tilts and turns to prep for traction. Stay well short of end range, especially turning and looking up."
+        },
+        {
+          "id": "pettibon-traction-door",
+          "kind": "reps",
+          "name": "Pettibon Traction — Door",
+          "reps": 10,
+          "cue": "Elbows and knees on door, curved piece behind neck, pad under chin. Exhale, sink toward ~20% body weight; inhale, stand. Start light; add ~5 reps a week up to 60. Stop if pain or arm symptoms."
+        },
+        {
+          "id": "cervical-traction-supine",
+          "kind": "timed",
+          "name": "Cervical Traction — Supine",
+          "duration": 75,
+          "cue": "Lie on back, cup the base of the skull in both hands. Gently pull the head lengthwise away from the shoulders; no tilt or turn. Release very slowly. Stop if arm or hand symptoms rise."
+        }
+      ]
+    }
+  ]
+}

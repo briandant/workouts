@@ -1,0 +1,142 @@
+{
+  "id": "spine-mobility-stability",
+  "title": "Spine Mobility & Stability",
+  "focus": "Mobility",
+  "level": "Beginner",
+  "summary": "2–3x/week (Tue/Thu/Sat). Thoracic mobility, gentle neck and upper-back strength, McGill Big 3 for the low back. No end-range neck rotation or loaded neck extension.",
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-Up",
+      "steps": [
+        {
+          "id": "90-90-breathing",
+          "kind": "timed",
+          "name": "90/90 Breathing",
+          "duration": 60,
+          "cue": "Lie on back, calves on a chair, hips and knees at 90°. Slow breaths into the lower ribs and belly, long exhale. Upper chest and neck stay quiet."
+        },
+        {
+          "id": "cat-camel",
+          "kind": "reps",
+          "name": "Cat–Camel",
+          "reps": 8,
+          "cue": "Hands and knees. Slowly round, then gently arch, through the easy middle range only; a warm-up, not a stretch. Neck follows the spine; don't crank the head up."
+        }
+      ]
+    },
+    {
+      "id": "thoracic-mobility",
+      "name": "Thoracic Mobility",
+      "steps": [
+        {
+          "id": "open-book",
+          "kind": "reps",
+          "name": "Open Book",
+          "reps": 8,
+          "perSide": true,
+          "cue": "Lie on side, knees stacked at 90°, arms out front. Sweep top arm open behind you; eyes follow the hand. Hold 3 sec. Knees stay together; turn from the upper back."
+        },
+        {
+          "id": "thread-the-needle",
+          "kind": "reps",
+          "name": "Thread the Needle",
+          "reps": 8,
+          "perSide": true,
+          "cue": "Hands and knees. Reach one arm under your body, then sweep it open toward the ceiling. Rotate through the upper back; hips stay square. Head follows gently, never to end range."
+        },
+        {
+          "id": "prayer-stretch",
+          "kind": "sets",
+          "name": "Prayer Stretch",
+          "sets": 2,
+          "duration": 30,
+          "rest": 10,
+          "cue": "Kneel, elbows on a bench or chair, hands together behind head. Sit hips back and let the chest sink toward the floor. Breathe into the upper back. Head in line, not hanging."
+        },
+        {
+          "id": "doorway-pec-stretch",
+          "kind": "sets",
+          "name": "Doorway Pec Stretch",
+          "sets": 2,
+          "duration": 30,
+          "rest": 10,
+          "perSide": true,
+          "cue": "Forearm on doorframe, elbow at shoulder height. Step through gently until the chest opens. Shoulders down. Stop if hand tingling increases."
+        }
+      ]
+    },
+    {
+      "id": "neck-upper-back-strength",
+      "name": "Neck & Upper-Back Strength",
+      "steps": [
+        {
+          "id": "neck-isometrics",
+          "kind": "reps",
+          "name": "Neck Isometrics",
+          "reps": 3,
+          "cue": "Hand on head. Press forward, each side, then into a turn each way at ~20% effort, 5-sec holds, 3 per direction. The head doesn't move. Stop if arm symptoms."
+        },
+        {
+          "id": "prone-thoracic-extension",
+          "kind": "sets",
+          "name": "Prone Thoracic Extension",
+          "sets": 2,
+          "reps": 8,
+          "rest": 30,
+          "cue": "Face down, chin tucked, eyes on the floor, arms by sides. Lift only the upper chest an inch or two from the mid-back; hold 2 sec. Neck stays neutral; never lead with the head."
+        }
+      ]
+    },
+    {
+      "id": "low-back-mcgill-big-3",
+      "name": "Low Back — McGill Big 3",
+      "steps": [
+        {
+          "id": "mcgill-curl-up",
+          "kind": "reps",
+          "name": "McGill Curl-Up",
+          "reps": 6,
+          "perSide": true,
+          "cue": "On back, one knee bent, hands under low back. Brace; lift head and shoulders slightly as one unit; hold 10 sec. Chin tucked, don't pull on the neck. Switch bent leg for side two."
+        },
+        {
+          "id": "side-plank-knees",
+          "kind": "reps",
+          "name": "Side Plank (Knees)",
+          "reps": 6,
+          "perSide": true,
+          "cue": "On side, knees bent, forearm under shoulder. Lift hips to a straight line from knee to head; hold 10 sec, lower. Head in line with the spine."
+        },
+        {
+          "id": "bird-dog",
+          "kind": "reps",
+          "name": "Bird Dog",
+          "reps": 6,
+          "perSide": true,
+          "cue": "Hands and knees, brace. Reach one arm forward and the opposite leg back to hip height; hold 10 sec. Back flat, no hip hiking. Eyes down, neck long."
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "name": "Finish",
+      "steps": [
+        {
+          "id": "glute-bridge",
+          "kind": "reps",
+          "name": "Glute Bridge",
+          "reps": 10,
+          "cue": "On back, knees bent. Squeeze glutes and lift hips to a line from shoulder to knee; hold 2 sec, lower slowly. Ribs down; don't arch the low back."
+        },
+        {
+          "id": "child-s-pose-breathing",
+          "kind": "timed",
+          "name": "Child's Pose Breathing",
+          "duration": 60,
+          "cue": "Knees wide, hips back toward heels, arms forward. Slow breaths into the back of the ribs. Forehead on hands or a pillow if the neck strains."
+        }
+      ]
+    }
+  ]
+}

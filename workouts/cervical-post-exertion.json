@@ -1,0 +1,38 @@
+{
+  "id": "cervical-post-exertion",
+  "title": "Cervical Post-Exertion",
+  "focus": "Recovery",
+  "level": "Beginner",
+  "summary": "As needed, right after yard work or demanding activity. Gentle traction to decompress the neck before a crash sets in. Stop if arm symptoms worsen.",
+  "blocks": [
+    {
+      "id": "decompress",
+      "name": "Decompress",
+      "steps": [
+        {
+          "id": "gentle-neck-warm-up",
+          "kind": "timed",
+          "name": "Gentle Neck Warm-Up",
+          "duration": 30,
+          "cue": "Slow, small nods, tilts and turns to prep for traction. Stay well short of end range, especially turning and looking up."
+        },
+        {
+          "id": "pettibon-traction-door",
+          "kind": "reps",
+          "name": "Pettibon Traction — Door",
+          "reps": 10,
+          "cue": "Do right after the activity. Elbows and knees on door, pad under chin. Exhale, sink toward ~20% body weight; inhale, stand. Match your current PM rep count. Stop if arm symptoms worsen."
+        },
+        {
+          "id": "cervical-traction-post-exertion",
+          "kind": "sets",
+          "name": "Cervical Traction — Post Exertion",
+          "sets": 2,
+          "duration": 75,
+          "rest": 30,
+          "cue": "Do right after the activity, before any crash sets in. Lie on back, cup the skull, gentle lengthwise pull, release very slowly. Stop if arm symptoms worsen."
+        }
+      ]
+    }
+  ]
+}

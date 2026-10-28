@@ -1,0 +1,52 @@
+{
+  "id": "cervical-am",
+  "title": "Cervical AM",
+  "focus": "Mobility",
+  "level": "Beginner",
+  "summary": "Daily morning neck and upper-back routine for cervical DDD and forward head posture. Do before golf or exercise. Stop if arm or finger numbness worsens.",
+  "blocks": [
+    {
+      "id": "neck-stabilizers",
+      "name": "Neck Stabilizers",
+      "steps": [
+        {
+          "id": "chin-tuck-cervical-retraction",
+          "kind": "sets",
+          "name": "Chin Tuck (Cervical Retraction)",
+          "sets": 3,
+          "reps": 10,
+          "rest": 30,
+          "cue": "Glide head straight back as if on a shelf, eyes level, no tilt. Hold 3–5 sec. Feel it mid-neck, not at the skull base. Stop if pain runs into the arm or fingers."
+        },
+        {
+          "id": "craniocervical-nod",
+          "kind": "reps",
+          "name": "Craniocervical Nod",
+          "reps": 10,
+          "cue": "Lie on back. Tiny 10° 'yes' nod without lifting the head; hold 10 sec, relax 5. Feel the front of the throat, not the outer neck. Stop if outer neck takes over. Never skip."
+        }
+      ]
+    },
+    {
+      "id": "thoracic-mobility",
+      "name": "Thoracic Mobility",
+      "steps": [
+        {
+          "id": "thoracic-extension-foam-roller",
+          "kind": "timed",
+          "name": "Thoracic Extension — Foam Roller",
+          "duration": 180,
+          "cue": "Roller across mid-back, hands support head. Drape and breathe ~45 sec, then move up one segment (3–4 spots). Mid/upper back only, never low back or neck. Stop if sharp or radiating pain."
+        },
+        {
+          "id": "thoracic-rotation-quadruped",
+          "kind": "reps",
+          "name": "Thoracic Rotation — Quadruped",
+          "reps": 10,
+          "perSide": true,
+          "cue": "Hands and knees, one hand behind head. Elbow down toward opposite wrist, then open to the ceiling; eyes follow the elbow. Rotate from the upper back; hips and low back stay still."
+        }
+      ]
+    }
+  ]
+}

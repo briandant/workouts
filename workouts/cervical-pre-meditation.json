@@ -1,0 +1,40 @@
+{
+  "id": "cervical-pre-meditation",
+  "title": "Cervical Pre-Meditation",
+  "focus": "Mobility",
+  "level": "Beginner",
+  "summary": "Daily, right before meditation, breathing or vagus work. Frees the neck and thoracic outlet. No end-range neck rotation; stop if ring/pinky numbness worsens.",
+  "blocks": [
+    {
+      "id": "release-and-align",
+      "name": "Release and Align",
+      "steps": [
+        {
+          "id": "scalene-stretch",
+          "kind": "sets",
+          "name": "Scalene Stretch",
+          "sets": 2,
+          "duration": 40,
+          "rest": 15,
+          "perSide": true,
+          "cue": "Hand just below collarbone, press down to anchor it. Tilt ear toward the opposite shoulder and breathe. Gentle, never forced. Stop if ring/pinky tingling increases."
+        },
+        {
+          "id": "scm-self-release",
+          "kind": "timed",
+          "name": "SCM Self-Release",
+          "duration": 60,
+          "perSide": true,
+          "cue": "Turn head 45° away. Gently pinch the rope-like muscle (ear to collarbone); hold light, still pressure, working top to bottom. No rubbing; stay off the pulse. Stop if dizzy."
+        },
+        {
+          "id": "wall-angels",
+          "kind": "reps",
+          "name": "Wall Angels",
+          "reps": 10,
+          "cue": "Back to wall, feet a few inches out. Head, upper back and low back stay on the wall. Slide arms from goalpost to overhead and back, 3 sec each way. Towel behind head if needed."
+        }
+      ]
+    }
+  ]
+}

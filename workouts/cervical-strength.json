@@ -1,0 +1,57 @@
+{
+  "id": "cervical-strength",
+  "title": "Cervical Strength",
+  "focus": "Strength",
+  "level": "Beginner",
+  "summary": "Mon/Wed/Fri/Sun, right after Cervical AM. Rebuilds lower traps to reverse forward head posture. Bodyweight and light band only until a PT clears progression.",
+  "blocks": [
+    {
+      "id": "prone-y-t-w",
+      "name": "Prone Y–T–W",
+      "steps": [
+        {
+          "id": "prone-y-raise",
+          "kind": "sets",
+          "name": "Prone Y Raise",
+          "sets": 3,
+          "reps": 10,
+          "rest": 40,
+          "cue": "Face down, forehead on towel, chin tucked, thumbs up. Arms overhead at 45°; lift by drawing shoulder blades down and together. Hold 3 sec. No shrugging; head stays down."
+        },
+        {
+          "id": "prone-t-raise",
+          "kind": "sets",
+          "name": "Prone T Raise",
+          "sets": 3,
+          "reps": 10,
+          "rest": 40,
+          "cue": "Arms straight out to the sides, thumbs up. Lift by squeezing the shoulder blades together; hold 3 sec. Neck relaxed, forehead stays on the towel."
+        },
+        {
+          "id": "prone-w-raise",
+          "kind": "sets",
+          "name": "Prone W Raise",
+          "sets": 3,
+          "reps": 10,
+          "rest": 40,
+          "cue": "Elbows bent, hands by shoulders, thumbs up. Pull elbows back and down to lift; hold 3 sec. Stop if the neck takes over from the shoulder blades."
+        }
+      ]
+    },
+    {
+      "id": "band-work",
+      "name": "Band Work",
+      "steps": [
+        {
+          "id": "band-pull-aparts",
+          "kind": "sets",
+          "name": "Band Pull-Aparts",
+          "sets": 3,
+          "reps": 15,
+          "rest": 30,
+          "cue": "Light band at shoulder height, arms straight. Pull apart until it touches the chest, squeeze 2 sec, return slowly. Chin tuck throughout; shoulders down. Stop if the neck tenses."
+        }
+      ]
+    }
+  ]
+}
