@@ -53,6 +53,24 @@ the current branch; run it from the main checkout on `main` so they deploy.
   (`STEP_FIELDS`) and `serialize.ts` (key order), the MCP `StepPatchSchema`,
   and migrate existing files with a one-off script that goes through the service.
 
+## Claude Desktop and the MCP server
+
+- Desktop's `claude_desktop_config.json` (`npm run mcp:desktop-config`) runs
+  `apps/mcp/src/server.ts` from the main checkout via `tsx`: no build, but it
+  sees only what is checked out there, so a change reaches Desktop once it is
+  merged to `main` locally.
+- Desktop starts the server at launch: quit (Cmd-Q) and relaunch it after
+  changing the server or the core model.
+- Desktop never reads CLAUDE.md or `.claude/skills/`. All it knows is the
+  `INSTRUCTIONS` string and each tool's description and input schema in
+  `tools.ts`. Schemas follow the core zod schemas (plus `StepPatchSchema`), but
+  `INSTRUCTIONS` is hand-written: when a field, step kind or behavior changes,
+  update it so Desktop knows when to use it, and cover it in `tools.test.ts`.
+  Player-only features (controls, shortcuts) need no MCP change.
+- The project `PostToolUse` hook (`.claude/hooks/mcp-sync-reminder.sh`)
+  prints this reminder after edits to `model.ts`, `service.ts`, `sequence.ts`
+  or `apps/mcp/src/*.ts`.
+
 ## Theme
 
 - Tokens live only in `apps/web/src/styles/theme.css` (`@theme`). Use the
