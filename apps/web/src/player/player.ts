@@ -72,3 +72,6 @@ export function stepProgress(s: PlayerState, steps: PlayStep[]): number {
   const p = st.kind === 'reps' ? s.stepElapsedMs / 1000 / st.est : 1 - s.remainingMs / durationMs(st);
   return Math.max(0, Math.min(1, p));
 }
+
+/** Start the current step over from its full time. */
+export const restartStep = (s: PlayerState, steps: PlayStep[]): PlayerState => goTo(s, steps, s.idx);

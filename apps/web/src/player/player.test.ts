@@ -1,6 +1,6 @@
 import type { PlayStep } from '@workouts/core';
 import { describe, expect, it } from 'vitest';
-import { addRest, goTo, initial, stepProgress, tick, timeLeft, togglePause } from './player.ts';
+import { addRest, goTo, initial, restartStep, stepProgress, tick, timeLeft, togglePause } from './player.ts';
 
 const base = { block: 'Main', round: 1, rounds: 1, set: 1, sets: 1 };
 const steps: PlayStep[] = [
@@ -67,6 +67,13 @@ describe('player', () => {
     expect(addRest(rest, steps).remainingMs).toBe(20_000);
     const work = goTo(initial(steps), steps, 1);
     expect(addRest(work, steps)).toBe(work);
+  });
+
+  it('restarts the current step from its full time, keeping workout time and pause', () => {
+    const timed = { ...goTo(initial(steps), steps, 1), remainingMs: 20_000, elapsedMs: 15_000, paused: true };
+    expect(restartStep(timed, steps)).toMatchObject({ idx: 1, remainingMs: 30_000, elapsedMs: 15_000, paused: true });
+    const reps = { ...goTo(initial(steps), steps, 3), stepElapsedMs: 8000 };
+    expect(restartStep(reps, steps)).toMatchObject({ idx: 3, stepElapsedMs: 0 });
   });
 
   it('reports time left and step progress', () => {

@@ -52,7 +52,7 @@ edited through an MCP server. No backend, no database.
 ## Keyboard
 
 The player is keyboard-first: Space pause/resume (Done on rep steps), ←/→
-previous/next, R add 10 s to a rest, M sound, Esc leave, `?` the shortcut
+previous/next, S start the step over, R add 10 s to a rest, M sound, Esc leave, `?` the shortcut
 list (`SHORTCUTS` in `PlayerPage.tsx`; keep it in step with the handler).
 Every action needs a button too.
 

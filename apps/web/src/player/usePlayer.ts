@@ -59,6 +59,7 @@ export function usePlayer(workoutId: string, steps: PlayStep[], start: () => P.P
     next: () => act((s) => P.goTo(s, steps, s.idx + 1)),
     back: () => act((s) => P.goTo(s, steps, s.idx - 1)),
     addRest: () => act((s) => P.addRest(s, steps)),
+    restartStep: () => act((s) => P.restartStep(s, steps)),
     restart: () => act(() => P.initial(steps)),
   };
 }

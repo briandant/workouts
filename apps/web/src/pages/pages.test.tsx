@@ -77,6 +77,18 @@ describe('player keyboard', () => {
     expect(screen.getByRole('timer')).toHaveAccessibleName('0:03');
   });
 
+  it('restarts the current step with the button or S', () => {
+    renderAt('/w/tabata/play', { fresh: true });
+    act(() => void vi.advanceTimersByTime(2000));
+    expect(screen.getByRole('timer')).toHaveAccessibleName('0:03');
+    act(() => void fireEvent.click(screen.getByRole('button', { name: 'Restart step' })));
+    expect(screen.getByRole('timer')).toHaveAccessibleName('0:05');
+    act(() => void vi.advanceTimersByTime(2000));
+    key('s');
+    expect(screen.getByRole('timer')).toHaveAccessibleName('0:05');
+    expect(counter()).toBe('1 / 20');
+  });
+
   it('marks a rep step done with space', () => {
     renderAt('/w/bodyweight-rounds/play', { fresh: true });
     key('ArrowRight'); // past get ready

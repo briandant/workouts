@@ -22,6 +22,7 @@ export const SHORTCUTS: [string, string][] = [
   ['Space', 'Pause / resume (Done on rep steps)'],
   ['→', 'Next step'],
   ['←', 'Previous step'],
+  ['S', 'Start this step over'],
   ['R', 'Add 10 s to a rest'],
   ['M', 'Sound on / off'],
   ['Esc', 'Leave the workout'],
@@ -64,6 +65,7 @@ function Player({ workout: w }: { workout: Workout }) {
     if (e.key === 'ArrowRight') return p.next();
     if (e.key === 'ArrowLeft') return p.back();
     if (e.key === 'Escape') return exit();
+    if (e.key === 's' || e.key === 'S') return p.restartStep();
     if (e.key === 'r' || e.key === 'R') return p.addRest();
     if (e.key === 'm' || e.key === 'M') return p.toggleSound();
   };
@@ -178,6 +180,9 @@ function Player({ workout: w }: { workout: Workout }) {
         aria-label="Player controls"
         className="sticky bottom-0 flex flex-wrap items-center justify-center gap-3 border-t border-line bg-bg px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] transition-colors duration-300"
       >
+        <Button size="icon-lg" onClick={p.restartStep} aria-label="Restart step">
+          <Icon as={RotateCcw} size={22} />
+        </Button>
         <Button size="icon-lg" onClick={p.back} aria-label="Previous step">
           <Icon as={SkipBack} size={22} />
         </Button>
