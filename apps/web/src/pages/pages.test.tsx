@@ -1,11 +1,17 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AppRoutes } from '../App.tsx';
 import { workouts } from '../data/workouts.ts';
 
 function Where() {
-  return <output data-testid="path">{useLocation().pathname}</output>;
+  const { pathname, search } = useLocation();
+  return (
+    <>
+      <output data-testid="path">{pathname}</output>
+      <output data-testid="search">{search}</output>
+    </>
+  );
 }
 
 function renderAt(path: string, state?: unknown) {
@@ -28,6 +34,41 @@ describe('list', () => {
     renderAt('/');
     expect(workouts.length).toBeGreaterThanOrEqual(5);
     for (const w of workouts) expect(screen.getByText(w.title)).toBeInTheDocument();
+  });
+
+  it('groups workouts under a heading per focus', () => {
+    renderAt('/');
+    const mobility = screen.getByRole('region', { name: /mobility/i });
+    for (const w of workouts.filter((w) => w.focus === 'Mobility'))
+      expect(within(mobility).getByText(w.title)).toBeInTheDocument();
+    expect(within(mobility).queryByText('Tabata Intervals')).not.toBeInTheDocument();
+  });
+
+  it('filters by search text and keeps the query in the URL', () => {
+    renderAt('/');
+    const search = screen.getByRole('searchbox', { name: /search workouts/i });
+    fireEvent.change(search, { target: { value: 'kettlebell' } });
+    expect(screen.getByText('Kettlebell Strength')).toBeInTheDocument();
+    expect(screen.queryByText('Tabata Intervals')).not.toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: /mobility/i })).not.toBeInTheDocument();
+    expect(screen.getByTestId('search')).toHaveTextContent('?q=kettlebell');
+  });
+
+  it('says when nothing matches', () => {
+    renderAt('/');
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'zzzz' } });
+    expect(screen.getByText(/no workouts match/i)).toBeInTheDocument();
+  });
+
+  it('focuses search with / and clears it with Escape', () => {
+    renderAt('/');
+    const search = screen.getByRole('searchbox');
+    key('/');
+    expect(search).toHaveFocus();
+    fireEvent.change(search, { target: { value: 'tabata' } });
+    act(() => void fireEvent.keyDown(search, { key: 'Escape' }));
+    expect(search).toHaveValue('');
+    expect(screen.getByText('Kettlebell Strength')).toBeInTheDocument();
   });
 });
 
