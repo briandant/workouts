@@ -8,6 +8,24 @@ description: How to build and change this workout app. Use whenever adding or ch
 A static React app on GitHub Pages; workouts live as JSON in the repo and are
 edited through an MCP server. No backend, no database.
 
+## How to ship a change
+
+Unless Brian says otherwise, every code change is made in a worktree and lands
+directly on `main` — no PRs, no feature branches left on the remote:
+
+1. Start in a git worktree (`EnterWorktree`, or
+   `git worktree add .claude/worktrees/<name> -b <name>`), never in the main
+   checkout.
+2. Make the change, run `npm run check` until it passes, and commit.
+3. Bring the branch up to date (`git fetch origin && git rebase origin/main`),
+   then from the main checkout `git pull --ff-only` and
+   `git merge --ff-only <branch>`, and `git push origin main`. Pushing to
+   `main` deploys.
+4. Delete the worktree and its branch once `main` is pushed.
+
+Workout-only edits go through the MCP `publish` tool, which commits and pushes
+the current branch; run it from the main checkout on `main` so they deploy.
+
 ## Where code goes
 
 - `packages/core` — TypeScript, no UI. The workout domain:
