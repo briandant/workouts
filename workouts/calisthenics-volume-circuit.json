@@ -1,0 +1,219 @@
+{
+  "id": "calisthenics-volume-circuit",
+  "title": "Calisthenics Volume Circuit",
+  "focus": "Circuit",
+  "level": "Intermediate",
+  "summary": "Rep-focused calisthenics: push, pull, dip and leg volume in two 4-round circuits, with in-place cardio bursts between moves to keep the heart rate up.",
+  "equipment": [
+    "Pull-up bar",
+    "Parallettes or dip bars",
+    "Resistance band (optional)",
+    "Mat (optional)"
+  ],
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-up",
+      "steps": [
+        {
+          "id": "jumping-jacks",
+          "kind": "timed",
+          "name": "Jumping jacks",
+          "duration": 60,
+          "cue": "Easy pace. Just get breathing."
+        },
+        {
+          "id": "arm-circles",
+          "kind": "timed",
+          "name": "Arm circles",
+          "duration": 30,
+          "cue": "Big circles, both directions."
+        },
+        {
+          "id": "scapular-pull-ups",
+          "kind": "reps",
+          "name": "Scapular pull-ups",
+          "reps": 10,
+          "cue": "Straight arms; pull shoulder blades down and back, then relax."
+        },
+        {
+          "id": "inchworm-to-push-up",
+          "kind": "reps",
+          "name": "Inchworm to push-up",
+          "reps": 5,
+          "cue": "Walk hands out, one push-up, walk back."
+        },
+        {
+          "id": "air-squats",
+          "kind": "reps",
+          "name": "Air squats",
+          "reps": 15,
+          "cue": "Slow and deep, chest up."
+        },
+        {
+          "id": "high-knees",
+          "kind": "timed",
+          "name": "High knees",
+          "duration": 30,
+          "cue": "Build to a quick pace."
+        }
+      ]
+    },
+    {
+      "id": "circuit-a-push-legs",
+      "name": "Circuit A: push + legs",
+      "rounds": 4,
+      "restBetweenRounds": 60,
+      "steps": [
+        {
+          "id": "push-ups",
+          "kind": "reps",
+          "name": "Push-ups",
+          "reps": 15,
+          "cue": "Full range, chest to fist height. Drop to knees to finish the set if needed."
+        },
+        {
+          "id": "high-knees-2",
+          "kind": "timed",
+          "name": "High knees",
+          "duration": 30,
+          "cue": "Fast feet, drive the knees to hip height."
+        },
+        {
+          "id": "dips",
+          "kind": "reps",
+          "name": "Dips",
+          "reps": 10,
+          "cue": "Shoulders below elbows, lock out at the top. Bench dips with feet on the floor to scale."
+        },
+        {
+          "id": "jumping-jacks-2",
+          "kind": "timed",
+          "name": "Jumping jacks",
+          "duration": 30,
+          "cue": "Quick and light on the toes."
+        },
+        {
+          "id": "squat-jumps",
+          "kind": "reps",
+          "name": "Squat jumps",
+          "reps": 15,
+          "cue": "Soft landing straight into the next rep. Air squats to scale."
+        }
+      ]
+    },
+    {
+      "id": "circuit-b-pull-core",
+      "name": "Circuit B: pull + core",
+      "rounds": 4,
+      "restBetweenRounds": 60,
+      "steps": [
+        {
+          "id": "pull-ups",
+          "kind": "reps",
+          "name": "Pull-ups",
+          "reps": 6,
+          "cue": "Chin over the bar, full hang at the bottom. Use the band, or do slow negatives, to get every rep."
+        },
+        {
+          "id": "mountain-climbers",
+          "kind": "timed",
+          "name": "Mountain climbers",
+          "duration": 30,
+          "cue": "Hips level with shoulders, knees snap in fast."
+        },
+        {
+          "id": "reverse-lunges",
+          "kind": "reps",
+          "name": "Reverse lunges",
+          "reps": 10,
+          "perSide": true,
+          "cue": "Back knee kisses the floor; push up through the front heel."
+        },
+        {
+          "id": "skater-hops",
+          "kind": "timed",
+          "name": "Skater hops",
+          "duration": 30,
+          "cue": "Bound side to side, land on one foot, stay low."
+        },
+        {
+          "id": "hanging-knee-raises",
+          "kind": "reps",
+          "name": "Hanging knee raises",
+          "reps": 10,
+          "cue": "No swinging; curl the hips up toward the bar."
+        }
+      ]
+    },
+    {
+      "id": "finisher",
+      "name": "Finisher",
+      "rounds": 3,
+      "restBetweenRounds": 30,
+      "steps": [
+        {
+          "id": "burpees",
+          "kind": "timed",
+          "name": "Burpees",
+          "duration": 40,
+          "cue": "Steady rhythm you can hold. Step back instead of jumping to scale."
+        },
+        {
+          "id": "rest-3",
+          "kind": "rest",
+          "duration": 20
+        },
+        {
+          "id": "plank-jacks",
+          "kind": "timed",
+          "name": "Plank jacks",
+          "duration": 30,
+          "cue": "Hard plank, jump the feet wide and narrow."
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-down",
+      "steps": [
+        {
+          "id": "walk-in-place",
+          "kind": "timed",
+          "name": "Walk in place",
+          "duration": 60,
+          "cue": "Bring the breathing down."
+        },
+        {
+          "id": "dead-hang",
+          "kind": "timed",
+          "name": "Dead hang",
+          "duration": 30,
+          "cue": "Relax the shoulders and let the spine lengthen."
+        },
+        {
+          "id": "doorway-chest-stretch",
+          "kind": "timed",
+          "name": "Doorway chest stretch",
+          "duration": 30,
+          "perSide": true
+        },
+        {
+          "id": "couch-stretch",
+          "kind": "timed",
+          "name": "Couch stretch",
+          "duration": 45,
+          "perSide": true,
+          "cue": "Back knee down, squeeze the glute, tall torso."
+        },
+        {
+          "id": "child-s-pose",
+          "kind": "timed",
+          "name": "Child's pose",
+          "duration": 60,
+          "cue": "Arms long, sink the hips back."
+        }
+      ]
+    }
+  ]
+}
