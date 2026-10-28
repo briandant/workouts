@@ -4,6 +4,10 @@
   "focus": "Strength",
   "level": "Beginner",
   "summary": "Mon/Wed/Fri/Sun, right after Cervical AM. Rebuilds lower traps to reverse forward head posture. Bodyweight and light band only until a PT clears progression.",
+  "equipment": [
+    "Towel",
+    "Light resistance band"
+  ],
   "blocks": [
     {
       "id": "prone-y-t-w",

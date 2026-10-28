@@ -4,6 +4,10 @@
   "focus": "Recovery",
   "level": "Beginner",
   "summary": "Daily at bedtime. Releases the skull base and gently decompresses the neck after the day's loading. Stop if headache, dizziness or arm symptoms.",
+  "equipment": [
+    "Pettibon over-door traction",
+    "Tennis balls (optional)"
+  ],
   "blocks": [
     {
       "id": "bedtime-release",

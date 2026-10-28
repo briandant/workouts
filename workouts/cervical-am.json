@@ -4,6 +4,9 @@
   "focus": "Mobility",
   "level": "Beginner",
   "summary": "Daily morning neck and upper-back routine for cervical DDD and forward head posture. Do before golf or exercise. Stop if arm or finger numbness worsens.",
+  "equipment": [
+    "Foam roller"
+  ],
   "blocks": [
     {
       "id": "neck-stabilizers",

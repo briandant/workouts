@@ -4,6 +4,9 @@
   "focus": "Recovery",
   "level": "Beginner",
   "summary": "As needed, right after yard work or demanding activity. Gentle traction to decompress the neck before a crash sets in. Stop if arm symptoms worsen.",
+  "equipment": [
+    "Pettibon over-door traction"
+  ],
   "blocks": [
     {
       "id": "decompress",
