@@ -49,9 +49,13 @@ the current branch; run it from the main checkout on `main` so they deploy.
 - **Never hand-edit workout JSON.** Change workouts through the MCP tools (or
   `WorkoutService` in code). The service assigns stable slug ids, validates the
   whole workout, and writes the canonical format, so diffs stay minimal.
-- Changing the model: update `model.ts`, the field lists in `service.ts`
-  (`STEP_FIELDS`) and `serialize.ts` (key order), the MCP `StepPatchSchema`,
-  and migrate existing files with a one-off script that goes through the service.
+- Changing the model: update `model.ts`, the key order in `serialize.ts`
+  (`FILE_KEYS`), the MCP `StepPatchSchema` and `INSTRUCTIONS`, and migrate
+  existing files with a one-off script that goes through the service.
+  `STEP_FIELDS` in `service.ts` is derived from the model. Tests fail if
+  `FILE_KEYS` or `StepPatchSchema` misses a model field, or `INSTRUCTIONS`
+  misses a step kind or optional field (`serialize.test.ts`, the "kept in step
+  with the model" block in `tools.test.ts`).
 
 ## Claude Desktop and the MCP server
 
@@ -65,7 +69,8 @@ the current branch; run it from the main checkout on `main` so they deploy.
   `INSTRUCTIONS` string and each tool's description and input schema in
   `tools.ts`. Schemas follow the core zod schemas (plus `StepPatchSchema`), but
   `INSTRUCTIONS` is hand-written: when a field, step kind or behavior changes,
-  update it so Desktop knows when to use it, and cover it in `tools.test.ts`.
+  update it so Desktop knows when to use it (the tests above enforce that it
+  names every kind and optional field; say *when* to use it yourself).
   Player-only features (controls, shortcuts) need no MCP change.
 - The project `PostToolUse` hook (`.claude/hooks/mcp-sync-reminder.sh`)
   prints this reminder after edits to `model.ts`, `service.ts`, `sequence.ts`

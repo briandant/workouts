@@ -12,6 +12,7 @@ pushing; pushes to `main` deploy.
 Claude Desktop runs the same MCP server straight from the main checkout and
 knows only its `INSTRUCTIONS` and tool schemas (`apps/mcp/src/tools.ts`), not
 this file or the skills. When a change affects what a workout author can do
-(new field, step kind, behavior), update those too; a `PostToolUse` hook
+(new field, step kind, behavior), update those too: tests in `apps/mcp` fail
+when they fall behind the model, and a `PostToolUse` hook
 (`.claude/hooks/mcp-sync-reminder.sh`) reminds you. Desktop picks it up after
 the change is on `main` in the main checkout and Desktop is quit and relaunched.

@@ -8,7 +8,7 @@ import {
   StepInput,
   Workout,
   WorkoutMeta,
-  type Step,
+  Step,
   type StepKind,
 } from './model.ts';
 import type { WorkoutRepository } from './repository.ts';
@@ -54,12 +54,10 @@ export interface Change {
   ids?: string[];
 }
 
-const STEP_FIELDS: Record<StepKind, string[]> = {
-  timed: ['name', 'duration', 'cue', 'perSide', 'video'],
-  reps: ['name', 'reps', 'cue', 'perSide', 'video'],
-  sets: ['name', 'sets', 'reps', 'duration', 'rest', 'cue', 'perSide', 'video'],
-  rest: ['duration'],
-};
+/** The fields updateStep may change on each kind of step: everything in its schema but id and kind. */
+const STEP_FIELDS = Object.fromEntries(
+  Step.options.map((s) => [s.shape.kind.value, Object.keys(s.shape).filter((k) => k !== 'id' && k !== 'kind')]),
+) as Record<StepKind, string[]>;
 
 function parse<S extends z.ZodType>(schema: S, value: unknown, label: string): z.infer<S> {
   const r = schema.safeParse(value);

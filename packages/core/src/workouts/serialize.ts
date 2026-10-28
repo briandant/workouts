@@ -1,9 +1,12 @@
 import { describeIssues, WorkoutError } from './errors.ts';
 import { Workout, type Block, type Step } from './model.ts';
 
-const WORKOUT_KEYS = ['id', 'title', 'focus', 'level', 'summary', 'equipment', 'blocks'] as const;
-const BLOCK_KEYS = ['id', 'name', 'rounds', 'restBetweenRounds', 'steps'] as const;
-const STEP_KEYS = ['id', 'kind', 'name', 'sets', 'reps', 'duration', 'rest', 'perSide', 'cue', 'video'] as const;
+/** Canonical key order on disk; every model field must be listed or it is dropped on write. */
+export const FILE_KEYS = {
+  workout: ['id', 'title', 'focus', 'level', 'summary', 'equipment', 'blocks'],
+  block: ['id', 'name', 'rounds', 'restBetweenRounds', 'steps'],
+  step: ['id', 'kind', 'name', 'sets', 'reps', 'duration', 'rest', 'perSide', 'cue', 'video'],
+} as const;
 
 function ordered<T extends object>(obj: T, keys: readonly string[]): T {
   const src = obj as Record<string, unknown>;
@@ -14,10 +17,10 @@ function ordered<T extends object>(obj: T, keys: readonly string[]): T {
 
 /** The one way a workout is written to disk: canonical key order, 2-space indent, trailing newline. */
 export function toFileJson(workout: Workout): string {
-  const w = ordered(workout, WORKOUT_KEYS);
+  const w = ordered(workout, FILE_KEYS.workout);
   w.blocks = workout.blocks.map((b): Block => {
-    const block = ordered(b, BLOCK_KEYS);
-    block.steps = b.steps.map((s): Step => ordered(s, STEP_KEYS));
+    const block = ordered(b, FILE_KEYS.block);
+    block.steps = b.steps.map((s): Step => ordered(s, FILE_KEYS.step));
     return block;
   });
   return JSON.stringify(w, null, 2) + '\n';

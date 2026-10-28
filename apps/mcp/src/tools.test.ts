@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
-import { WorkoutService } from '@workouts/core';
+import { Block, Step, Workout, WorkoutService } from '@workouts/core';
 import { FsWorkoutRepository } from '@workouts/core/node';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createServer } from './tools.ts';
@@ -104,5 +104,33 @@ describe('workouts MCP server', () => {
     expect(r).toMatchObject({ error: true });
     expect(r.body).toMatch(/Other files are staged \(README\.md\)/);
     expect(git('log', '-1', '--format=%s')).toBe('init');
+  });
+});
+
+/*
+  Claude Desktop knows the workout model only through this server's tool schemas and
+  instructions, so these fail when the model changes and the server isn't updated to match.
+*/
+describe('kept in step with the model', () => {
+  const stepFields = [...new Set(Step.options.flatMap((s) => Object.keys(s.shape)))].filter((k) => k !== 'id' && k !== 'kind');
+  const optional = (shape: Record<string, { safeParse(v: unknown): { success: boolean } }>) =>
+    Object.entries(shape).flatMap(([k, t]) => (t.safeParse(undefined).success ? [k] : []));
+
+  it('update_step accepts every step field', async () => {
+    const { tools } = await client.listTools();
+    const { properties } = tools.find((t) => t.name === 'update_step')!.inputSchema;
+    const changes = properties?.changes as { properties: Record<string, unknown> };
+    expect(Object.keys(changes.properties).sort()).toEqual(stepFields.sort());
+  });
+
+  it('instructions name every step kind and every optional field', () => {
+    const instructions = client.getInstructions() ?? '';
+    const terms = new Set([
+      ...Step.options.map((s) => s.shape.kind.value),
+      ...optional(Workout.shape),
+      ...optional(Block.shape),
+      ...Step.options.flatMap((s) => optional(s.shape)),
+    ]);
+    expect([...terms].filter((t) => !instructions.includes(t))).toEqual([]);
   });
 });

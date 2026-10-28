@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { circuit, strength } from './fixtures.ts';
-import { parseWorkoutFile, toFileJson } from './serialize.ts';
+import { Block, Step, Workout } from './model.ts';
+import { FILE_KEYS, parseWorkoutFile, toFileJson } from './serialize.ts';
 
 describe('toFileJson', () => {
   it('writes keys in canonical order regardless of input order', () => {
@@ -51,5 +52,14 @@ describe('parseWorkoutFile', () => {
 
   it('rejects invalid JSON with a readable message', () => {
     expect(() => parseWorkoutFile('{ nope', 'x.json')).toThrow(/x\.json: not valid JSON/);
+  });
+});
+
+describe('FILE_KEYS', () => {
+  it('lists every field in the model, so no field is dropped on write', () => {
+    const sorted = (keys: Iterable<string>) => [...new Set(keys)].sort();
+    expect(sorted(FILE_KEYS.workout)).toEqual(sorted(Object.keys(Workout.shape)));
+    expect(sorted(FILE_KEYS.block)).toEqual(sorted(Object.keys(Block.shape)));
+    expect(sorted(FILE_KEYS.step)).toEqual(sorted(Step.options.flatMap((s) => Object.keys(s.shape))));
   });
 });

@@ -21,7 +21,9 @@ const INSTRUCTIONS = `Workouts for the Follow-along app. Each workout is a JSON 
 
 Never write workout JSON yourself: change workouts only with these tools. They validate every change and keep ids and the file format stable.
 
-How a workout is built: blocks (e.g. Warm-up, Main set, Cool-down; a block can repeat for several rounds with rest between rounds) hold steps. Step kinds:
+A workout has a title, focus, level, summary and optional equipment (the items needed, e.g. "Pull-up bar", "Resistance band (optional)"; [] means none).
+
+How a workout is built: blocks (e.g. Warm-up, Main set, Cool-down; a block can repeat for several rounds, with restBetweenRounds seconds between them) hold steps. Step kinds:
 - timed: do it for duration seconds
 - reps: do reps reps, then tap Done
 - sets: several sets of reps OR duration, with optional rest seconds between sets
@@ -142,7 +144,7 @@ export function createServer(svc: WorkoutService, { root, push = true }: ServerO
     'update_workout_details',
     {
       title: 'Update workout details',
-      description: 'Change a workout’s title, focus, level or summary.',
+      description: 'Change a workout’s title, focus, level, summary or equipment.',
       inputSchema: { workoutId: WorkoutId, ...WorkoutMeta.partial().shape },
       annotations: write,
     },
