@@ -36,6 +36,13 @@
           "name": "Wall Angels",
           "reps": 10,
           "cue": "Back to wall, feet a few inches out. Head, upper back and low back stay on the wall. Slide arms from goalpost to overhead and back, 3 sec each way. Towel behind head if needed."
+        },
+        {
+          "id": "seated-chin-nod-hold",
+          "kind": "reps",
+          "name": "Seated Chin Nod Hold",
+          "reps": 5,
+          "cue": "Sit tall on your sit bones, ribs stacked over pelvis. Light chin nod (10–20% effort); hold 10 sec while breathing slowly. Then release the effort and keep that posture into meditation."
         }
       ]
     }

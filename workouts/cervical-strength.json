@@ -3,7 +3,7 @@
   "title": "Cervical Strength",
   "focus": "Strength",
   "level": "Beginner",
-  "summary": "Mon/Wed/Fri/Sun, right after Cervical AM. Rebuilds lower traps to reverse forward head posture. Bodyweight and light band only until a PT clears progression.",
+  "summary": "Mon/Wed/Fri/Sun, after Cervical AM. Lower traps behind; deep neck flexors, core and serratus in front, to reverse forward head posture. Light loads only until a PT clears progression.",
   "equipment": [
     "Towel",
     "Light resistance band"
@@ -54,6 +54,40 @@
           "reps": 15,
           "rest": 30,
           "cue": "Light band at shoulder height, arms straight. Pull apart until it touches the chest, squeeze 2 sec, return slowly. Chin tuck throughout; shoulders down. Stop if the neck tenses."
+        }
+      ]
+    },
+    {
+      "id": "front-chain",
+      "name": "Front Chain",
+      "steps": [
+        {
+          "id": "chin-tuck-head-lift",
+          "kind": "sets",
+          "name": "Chin-Tuck Head Lift",
+          "sets": 3,
+          "reps": 5,
+          "rest": 30,
+          "cue": "On back, knees bent. Nod chin first, then lift head ~1 inch keeping the nod; hold 5 sec, build to 10. Lower before the chin pokes forward. Too hard? Prop head and shoulders on pillows. Stop if arm symptoms."
+        },
+        {
+          "id": "dead-bug",
+          "kind": "sets",
+          "name": "Dead Bug",
+          "sets": 2,
+          "reps": 8,
+          "rest": 30,
+          "perSide": true,
+          "cue": "On back, arms up, hips and knees at 90°. Exhale, ribs down, low back gently into the floor. Slowly lower opposite arm and leg, then return. Head stays down, neck relaxed. Stop the rep if the low back arches."
+        },
+        {
+          "id": "serratus-wall-slide",
+          "kind": "sets",
+          "name": "Serratus Wall Slide",
+          "sets": 2,
+          "reps": 10,
+          "rest": 30,
+          "cue": "Forearms on the wall, pinkies toward it. Push the wall away to spread the shoulder blades, then slide arms up into a V and back down. Shoulders away from ears, chin tucked. Stop if hand tingling increases."
         }
       ]
     }

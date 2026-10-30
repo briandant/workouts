@@ -1,0 +1,88 @@
+{
+  "id": "front-chain-stretch-release",
+  "title": "Front Chain Stretch & Release",
+  "focus": "Mobility",
+  "level": "Beginner",
+  "summary": "3–5x/week, evenings or after Spine Mobility. Releases, then lengthens the front chain: diaphragm, chest, abs, hip flexors. Eyes down in backbends; never tip the head back.",
+  "blocks": [
+    {
+      "id": "self-massage",
+      "name": "Self-Massage",
+      "steps": [
+        {
+          "id": "diaphragm-rib-release",
+          "kind": "timed",
+          "name": "Diaphragm Rib Release",
+          "duration": 90,
+          "cue": "Sit slightly slumped to soften the belly. Hook fingertips just under the front of the lower ribs. Exhale and sink in gently; inhale and let the ribs lift into your fingers. Work center to sides. Not on a full stomach."
+        },
+        {
+          "id": "pec-minor-ball-release",
+          "kind": "timed",
+          "name": "Pec Minor Ball Release",
+          "duration": 60,
+          "perSide": true,
+          "cue": "Ball below the collarbone, just inside the front of the shoulder; lean into a wall. Hold still on tender spots 20–30 sec and breathe, then shift slightly. Avoid the armpit and bone. Stop if hand tingling."
+        },
+        {
+          "id": "hip-flexor-ball-release",
+          "kind": "timed",
+          "name": "Hip Flexor Ball Release",
+          "duration": 60,
+          "perSide": true,
+          "cue": "Face down, ball just below and outside the front hip bone. Rest your weight on it and breathe; slowly bend and straighten the knee. Stay off the groin and any pulse. Moderate pressure only."
+        }
+      ]
+    },
+    {
+      "id": "front-chain-stretch",
+      "name": "Front Chain Stretch",
+      "steps": [
+        {
+          "id": "sphinx",
+          "kind": "timed",
+          "name": "Sphinx",
+          "duration": 60,
+          "cue": "Face down, elbows under shoulders, forearms flat. Let the belly sink and breathe into it. Glutes relaxed. Eyes on the floor, neck long. Warm-up for the seal."
+        },
+        {
+          "id": "seal-stretch",
+          "kind": "sets",
+          "name": "Seal Stretch",
+          "sets": 3,
+          "duration": 30,
+          "rest": 15,
+          "cue": "Hands a bit ahead of and wider than the shoulders. Press up only as far as is comfortable, hips down, glutes soft. Eyes on the floor ahead; don't look up. Breathe into the belly. Back off if the low back pinches."
+        },
+        {
+          "id": "half-kneeling-hip-flexor-reach",
+          "kind": "timed",
+          "name": "Half-Kneeling Hip Flexor Reach",
+          "duration": 45,
+          "perSide": true,
+          "cue": "Kneel on one knee, tuck the pelvis and squeeze that glute, shift forward slightly. Reach the same-side arm up and a little across. Ribs down, chin level. Stretch runs from front of hip up the side."
+        },
+        {
+          "id": "foam-roller-chest-opener",
+          "kind": "timed",
+          "name": "Foam Roller Chest Opener",
+          "duration": 120,
+          "cue": "Lie lengthwise on the roller, head and tailbone supported, knees bent. Arms out in a goalpost, palms up; let the chest open with gravity. Slide arms lower if the hands tingle."
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "name": "Finish",
+      "steps": [
+        {
+          "id": "crocodile-breathing",
+          "kind": "timed",
+          "name": "Crocodile Breathing",
+          "duration": 60,
+          "cue": "Face down, forehead on stacked hands. Breathe slowly into the belly and lower back so you feel your belly press into the floor. Neck and shoulders stay quiet."
+        }
+      ]
+    }
+  ]
+}

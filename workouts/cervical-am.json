@@ -26,7 +26,14 @@
           "kind": "reps",
           "name": "Craniocervical Nod",
           "reps": 10,
-          "cue": "Lie on back. Tiny 10° 'yes' nod without lifting the head; hold 10 sec, relax 5. Feel the front of the throat, not the outer neck. Stop if outer neck takes over. Never skip."
+          "cue": "Lie on back. Tiny 10° 'yes' nod, head stays down; hold 10 sec, relax 5. Front of throat works, outer neck stays soft. Once 10 × 10 sec is easy with no outer-neck grip, move on to the quadruped nod. Never skip."
+        },
+        {
+          "id": "quadruped-chin-nod",
+          "kind": "reps",
+          "name": "Quadruped Chin Nod",
+          "reps": 8,
+          "cue": "Hands and knees, neck in line with the spine, eyes down. Gently nod chin toward throat and hold 5 sec without letting the head drop or lift. Gravity-loaded step up from the supine nod. Stop if the outer neck grips."
         }
       ]
     },
