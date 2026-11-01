@@ -10,7 +10,7 @@ import { Segments } from '../components/ui/Segments.tsx';
 import { Stat, StatGrid } from '../components/ui/Stat.tsx';
 import { Tag } from '../components/ui/Tag.tsx';
 import { findWorkout } from '../data/workouts.ts';
-import { youtubeEmbed } from '../player/media.ts';
+import { isImage, youtubeEmbed } from '../player/media.ts';
 import * as P from '../player/player.ts';
 import { loadResume, saveResume } from '../player/storage.ts';
 import { usePlayer } from '../player/usePlayer.ts';
@@ -221,6 +221,8 @@ function Demo({ step, caption }: { step: PlayStep; caption: string }) {
             allow="autoplay; encrypted-media"
             className="pointer-events-none absolute inset-0 size-full border-0"
           />
+        ) : isImage(step.video!) ? (
+          <img key={step.video} src={step.video} alt={`${step.name} demo`} className="absolute inset-0 size-full object-contain" />
         ) : (
           <video key={step.video} src={step.video} autoPlay muted loop playsInline className="absolute inset-0 size-full object-cover" />
         )}

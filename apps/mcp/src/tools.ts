@@ -28,7 +28,7 @@ How a workout is built: blocks (e.g. Warm-up, Main set, Cool-down; a block can r
 - reps: do reps reps, then tap Done
 - sets: several sets of reps OR duration, with optional rest seconds between sets
 - rest: rest for duration seconds
-Named steps may have a cue (short form note), perSide, and a video (YouTube or .mp4 URL).
+Named steps may have a cue (short form note), perSide, and a video: the demo shown beside the step, a YouTube or .mp4 URL, or an animated image (.svg/.gif/.webp). The app's own animated demos live in apps/web/public/demos/ and are served at https://briandant.github.io/workouts/demos/<file>.svg; use one of those when it exists for the exercise.
 
 Blocks and steps are addressed by id (shown in [brackets] by get_workout). Work in this order: get_workout or list_workouts, make the edits, check timing with preview_workout, then call publish once with a short commit message describing the change.`;
 

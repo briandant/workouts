@@ -27,3 +27,12 @@ export function youtubeEmbed(url: string): string | null {
   });
   return `https://www.youtube-nocookie.com/embed/${id}?${params}`;
 }
+
+/** True for an image demo (an animated .svg/.gif/.webp, or a still .png/.jpg), shown with <img> instead of <video>. */
+export function isImage(url: string): boolean {
+  try {
+    return /\.(svg|gif|webp|apng|png|jpe?g)$/i.test(new URL(url).pathname);
+  } catch {
+    return false;
+  }
+}

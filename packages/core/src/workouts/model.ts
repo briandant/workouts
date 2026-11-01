@@ -27,7 +27,9 @@ const Cue = z.string().trim().min(1).max(240).describe('Short form note shown un
 const PerSide = z.boolean().describe('Do the movement on each side');
 const Video = z
   .url()
-  .describe('Demo video: a YouTube link (watch, youtu.be, shorts; ?t= sets the start) or an .mp4/.webm URL');
+  .describe(
+    'Demo: a YouTube link (watch, youtu.be, shorts; ?t= sets the start), an .mp4/.webm URL, or an animated image (.svg/.gif/.webp), e.g. https://briandant.github.io/workouts/demos/<name>.svg',
+  );
 
 const named = { name: Name, cue: Cue.optional(), perSide: PerSide.optional(), video: Video.optional() };
 
