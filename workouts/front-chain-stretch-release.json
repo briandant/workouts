@@ -73,7 +73,8 @@
           "kind": "timed",
           "name": "Foam Roller Chest Opener",
           "duration": 120,
-          "cue": "Lie lengthwise on the roller, head and tailbone supported, knees bent. Arms out in a goalpost, palms up; let the chest open with gravity. Slide arms lower if the hands tingle."
+          "cue": "Lie lengthwise on the roller, head and tailbone supported, knees bent. Arms out in a goalpost, palms up; let the chest open with gravity. Slide arms lower if the hands tingle.",
+          "video": "https://briandant.github.io/workouts/demos/foam-roller-chest-opener.svg"
         }
       ]
     },
