@@ -1,0 +1,116 @@
+{
+  "id": "breathwork-diaphragm",
+  "title": "Breathwork: Diaphragm & Lung Capacity",
+  "focus": "Recovery",
+  "level": "All levels",
+  "summary": "15 min of breath training: wake up the diaphragm, open the ribs, then 30 resisted inhales (the IMT dose shown to build inspiratory strength), slow-paced breathing to finish.",
+  "equipment": [
+    "Inspiratory muscle trainer (optional)",
+    "Book or 2–5 lb weight (optional)",
+    "Mat"
+  ],
+  "blocks": [
+    {
+      "id": "find-the-diaphragm",
+      "name": "Find the diaphragm",
+      "steps": [
+        {
+          "id": "supine-belly-breathing",
+          "kind": "timed",
+          "name": "Supine belly breathing",
+          "duration": 90,
+          "cue": "On your back, knees bent, one hand on chest, one on belly. Inhale through the nose so only the belly hand rises; exhale slowly. Chest stays quiet."
+        },
+        {
+          "id": "crocodile-breathing",
+          "kind": "timed",
+          "name": "Crocodile breathing",
+          "duration": 90,
+          "cue": "Face down, forehead on hands. Breathe into the floor: feel the belly and low back/sides push out. Long, relaxed exhale."
+        }
+      ]
+    },
+    {
+      "id": "open-the-ribs",
+      "name": "Open the ribs",
+      "steps": [
+        {
+          "id": "side-lying-lateral-rib-breaths",
+          "kind": "timed",
+          "name": "Side-lying rib breaths (left side up)",
+          "duration": 45,
+          "cue": "Lie on your right side, left hand on the lower ribs. Inhale to push the ribs into your hand, sideways and up. Exhale fully, ribs drop."
+        },
+        {
+          "id": "side-lying-rib-breaths-right-side-up",
+          "kind": "timed",
+          "name": "Side-lying rib breaths (right side up)",
+          "duration": 45,
+          "cue": "Roll to your left side, right hand on the lower ribs. Inhale to push the ribs into your hand; exhale fully."
+        },
+        {
+          "id": "thoracic-expansion-with-arm-reach",
+          "kind": "timed",
+          "name": "Thoracic expansion with arm reach",
+          "duration": 60,
+          "cue": "Seated tall. Inhale as both arms sweep overhead, filling the upper chest last. Brief pause at the top, then exhale as arms lower."
+        }
+      ]
+    },
+    {
+      "id": "diaphragm-strength",
+      "name": "Diaphragm strength",
+      "steps": [
+        {
+          "id": "weighted-belly-breathing",
+          "kind": "timed",
+          "name": "Weighted belly breathing",
+          "duration": 90,
+          "cue": "On your back with a book or 2–5 lb weight on the belly. Lift it with each nasal inhale, lower it slowly on the exhale. Ribs stay down."
+        },
+        {
+          "id": "resisted-inhales",
+          "kind": "sets",
+          "name": "Resisted inhales",
+          "sets": 5,
+          "duration": 30,
+          "rest": 20,
+          "cue": "~6 breaths per set (30 total). Trainer at ~50% of max, or inhale through a straw/tight pursed lips: sharp, full, hard inhale; slow, easy exhale. Stop if dizzy."
+        }
+      ]
+    },
+    {
+      "id": "breath-control",
+      "name": "Breath control",
+      "steps": [
+        {
+          "id": "pursed-lip-exhales",
+          "kind": "timed",
+          "name": "Pursed-lip exhales",
+          "duration": 60,
+          "cue": "Inhale through the nose for 2–3 counts; exhale through pursed lips for twice as long, steady and complete. Like cooling soup."
+        },
+        {
+          "id": "resonance-breathing-6-min",
+          "kind": "timed",
+          "name": "Resonance breathing (6/min)",
+          "duration": 150,
+          "cue": "Seated. In through the nose for 5 seconds, out for 5 seconds, belly-led, smooth and quiet. No breath holds."
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-down",
+      "steps": [
+        {
+          "id": "90-90-hip-lift-breathing",
+          "kind": "timed",
+          "name": "90/90 hip-lift breathing",
+          "duration": 90,
+          "cue": "On your back, feet on a wall, hips and knees at 90°. Tilt the pelvis so the low back is flat. Inhale into the back ribs; exhale fully until the abs engage."
+        }
+      ]
+    }
+  ]
+}
