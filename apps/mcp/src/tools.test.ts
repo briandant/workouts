@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
-import { Block, Step, Workout, WorkoutService } from '@workouts/core';
+import { Block, Step, TAGS, Workout, WorkoutService } from '@workouts/core';
 import { FsWorkoutRepository } from '@workouts/core/node';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createServer } from './tools.ts';
@@ -90,6 +90,17 @@ describe('workouts MCP server', () => {
     expect(r.body).not.toContain('Collection:');
   });
 
+  it('tags a workout and shows its tags in the outline and the list', async () => {
+    await call('create_workout', { ...core, tags: ['HIIT'] });
+    const r = await call('update_workout_details', { workoutId: 'core-burner', tags: ['HIIT', 'Cervical'] });
+    expect(r.error).toBe(false);
+    expect(r.body).toContain('Tags: Cervical, HIIT');
+    expect((await call('list_workouts')).body).toMatch(/^core-burner: .*Cervical, HIIT/m);
+    expect((await call('update_workout_details', { workoutId: 'core-burner', tags: ['Yoga'] })).error).toBe(true);
+    const cleared = await call('update_workout_details', { workoutId: 'core-burner', tags: [] });
+    expect(cleared.body).not.toContain('Tags:');
+  });
+
   it('rejects path-traversal ids', async () => {
     const r = await call('get_workout', { workoutId: '../package' });
     expect(r.error).toBe(true);
@@ -140,5 +151,10 @@ describe('kept in step with the model', () => {
       ...Step.options.flatMap((s) => optional(s.shape)),
     ]);
     expect([...terms].filter((t) => !instructions.includes(t))).toEqual([]);
+  });
+
+  it('instructions name every tag, so Desktop knows when to use each', () => {
+    const instructions = client.getInstructions() ?? '';
+    expect(TAGS.filter((t) => !instructions.includes(`"${t}"`))).toEqual([]);
   });
 });

@@ -56,6 +56,10 @@ the current branch; run it from the main checkout on `main` so they deploy.
   `FILE_KEYS` or `StepPatchSchema` misses a model field, or `INSTRUCTIONS`
   misses a step kind or optional field (`serialize.test.ts`, the "kept in step
   with the model" block in `tools.test.ts`).
+- Tags (`TAGS` in `model.ts`) are a fixed list; the list pages' filter shows
+  the ones in use, in that order. Adding one: append it to `TAGS`, say when to
+  use it in `INSTRUCTIONS` (`tools.test.ts` fails until you do), and tag the
+  workouts it fits through the service.
 
 ## Claude Desktop and the MCP server
 

@@ -3,6 +3,9 @@
   "title": "Seven-Minute Circuit",
   "focus": "HIIT",
   "level": "All levels",
+  "tags": [
+    "HIIT"
+  ],
   "summary": "Twelve bodyweight moves, 30 seconds on and 10 off.",
   "equipment": [
     "Wall",

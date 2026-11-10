@@ -31,6 +31,11 @@ describe('toFileJson', () => {
     expect(text).toContain('"summary": "Heavy sets with full recovery between them.",\n  "equipment": [\n    "Kettlebell"\n  ],\n  "blocks"');
   });
 
+  it('writes tags after the level and before the summary', () => {
+    const text = toFileJson({ ...strength(), tags: ['Cervical', 'HIIT'] });
+    expect(text).toContain('"level": "Intermediate",\n  "tags": [\n    "Cervical",\n    "HIIT"\n  ],\n  "summary"');
+  });
+
   it('is byte-stable through a parse and write', () => {
     const text = toFileJson(strength());
     expect(toFileJson(parseWorkoutFile(text))).toBe(text);

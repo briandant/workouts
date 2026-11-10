@@ -16,7 +16,7 @@ import {
 } from '@workouts/core';
 import { z } from 'zod';
 import { publishWorkouts, workoutChanges } from './git.ts';
-import { outline, preview } from './outline.ts';
+import { listLine, outline, preview } from './outline.ts';
 
 const INSTRUCTIONS = `Workouts for the Follow-along app. Each workout is a JSON file in the repo's workouts/ folder; the app is rebuilt and deployed to GitHub Pages when they are pushed to main.
 
@@ -25,6 +25,15 @@ Never write workout JSON yourself: change workouts only with these tools. They v
 A workout has a title, focus, level, summary and optional equipment (the items needed, e.g. "Pull-up bar", "Resistance band (optional)"; [] means none).
 
 Optional collection puts a workout on its own page instead of the main list. "hers" is the Her workouts page (shown in pink): use it for workouts meant for the user's wife, such as the prenatal ones. Leave it out for the main list; update_workout_details with collection null moves a workout back.
+
+Optional tags label a workout across focuses; each list page has a filter for them. Choose only from this list, and give a workout every tag that fits:
+- "Cervical": the neck and posture program (the Cervical routines and the neck-safe work that goes with them)
+- "Low back": low-back and pelvic care, e.g. the McGill Big 3
+- "Calisthenics": bodyweight strength and skill work (push-ups, pull-ups, dips, handstands, L-sits)
+- "HIIT": hard intervals or circuits that keep the heart rate high
+- "Breathwork": workouts built around breathing practice
+- "Prenatal": made for pregnancy
+Setting tags with update_workout_details replaces the whole list; [] removes them. A new tag name needs a code change (TAGS in packages/core), so say so instead of picking a near miss.
 
 How a workout is built: blocks (e.g. Warm-up, Main set, Cool-down; a block can repeat for several rounds, with restBetweenRounds seconds between them) hold steps. Step kinds:
 - timed: do it for duration seconds
@@ -86,11 +95,11 @@ export function createServer(svc: WorkoutService, { root, push = true }: ServerO
 
   server.registerTool(
     'list_workouts',
-    { title: 'List workouts', description: 'Every workout with its id, focus, level and length.', annotations: read },
+    { title: 'List workouts', description: 'Every workout with its id, focus, level, length and tags.', annotations: read },
     () =>
       run(async () => {
         const all = await svc.list();
-        return text(all.map((w) => outline(w).split('\n')[0]).join('\n') || 'No workouts yet.');
+        return text(all.map(listLine).join('\n') || 'No workouts yet.');
       }),
   );
 
@@ -147,7 +156,7 @@ export function createServer(svc: WorkoutService, { root, push = true }: ServerO
     'update_workout_details',
     {
       title: 'Update workout details',
-      description: 'Change a workout’s title, focus, level, collection, summary or equipment.',
+      description: 'Change a workout’s title, focus, level, collection, tags, summary or equipment.',
       inputSchema: { workoutId: WorkoutId, ...WorkoutMetaPatch.shape },
       annotations: write,
     },

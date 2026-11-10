@@ -6,6 +6,7 @@ import { Icon } from '../components/ui/Icon.tsx';
 import { Kicker } from '../components/ui/Kicker.tsx';
 import { Segments } from '../components/ui/Segments.tsx';
 import { Stat, StatGrid } from '../components/ui/Stat.tsx';
+import { Tag } from '../components/ui/Tag.tsx';
 import { homeOf } from '../components/workouts/collections.ts';
 import { shape, stats } from '../components/workouts/shape.ts';
 import { findWorkout } from '../data/workouts.ts';
@@ -42,6 +43,20 @@ export function DetailPage() {
             </Kicker>
             <h1 className="font-display text-[clamp(3.25rem,10vw,6rem)] text-balance">{w.title}</h1>
             <p className="max-w-[44ch] text-lg text-pretty text-muted">{w.summary}</p>
+            {w.tags && (
+              <ul aria-label="Tags" className="flex flex-wrap gap-2">
+                {w.tags.map((t) => (
+                  <li key={t}>
+                    {/* Each tag opens this workout's list, filtered by it. */}
+                    <Link to={{ pathname: home.path, search: `?${new URLSearchParams({ tag: t })}` }} className="group rounded-sm">
+                      <Tag tone="muted" className="transition group-hover:border-accent group-hover:text-accent">
+                        {t}
+                      </Tag>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <StatGrid>
