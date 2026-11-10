@@ -1,18 +1,22 @@
-import { formatMinutes, type Workout } from '@workouts/core';
-import { Clock, Search, X } from 'lucide-react';
+import { formatMinutes, type Collection, type Workout } from '@workouts/core';
+import { ChevronLeft, ChevronRight, Clock, Search, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { groupByFocus, matches } from '../components/workouts/browse.ts';
+import { COLLECTION_PAGES, onPage } from '../components/workouts/collections.ts';
 import { shape, stats } from '../components/workouts/shape.ts';
 import { Icon } from '../components/ui/Icon.tsx';
 import { Kicker } from '../components/ui/Kicker.tsx';
 import { Segments } from '../components/ui/Segments.tsx';
 import { workouts } from '../data/workouts.ts';
 
-export function ListPage() {
+/** The main list, or with `collection` that collection's own page (in its tone). */
+export function ListPage({ collection }: { collection?: Collection }) {
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
-  const groups = groupByFocus(workouts.filter((w) => matches(w, query)));
+  const page = collection && COLLECTION_PAGES[collection];
+  const list = onPage(workouts, collection);
+  const groups = groupByFocus(list.filter((w) => matches(w, query)));
   const search = useRef<HTMLInputElement>(null);
 
   // The query lives in the URL so Back from a workout returns to the same filtered list.
@@ -30,17 +34,34 @@ export function ListPage() {
   }, []);
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 pt-5 pb-20 sm:px-6">
+    <div data-tone={page?.tone} className="mx-auto w-full max-w-6xl px-4 pt-5 pb-20 sm:px-6">
       <header className="flex items-center justify-between">
-        <span className="font-display text-xl tracking-wide">
-          Follow<span className="text-accent">-</span>along
-        </span>
-        <span className="text-sm text-muted">{workouts.length} workouts</span>
+        {page ? (
+          <Link to="/" className="-ml-2 inline-flex items-center gap-1 rounded-md px-2 py-1 text-sm font-medium text-muted hover:text-ink">
+            <Icon as={ChevronLeft} size={18} />
+            Workouts
+          </Link>
+        ) : (
+          <span className="font-display text-xl tracking-wide">
+            Follow<span className="text-accent">-</span>along
+          </span>
+        )}
+        <span className="text-sm text-muted">{list.length} workouts</span>
       </header>
 
       <h1 className="mt-10 mb-8 font-display text-[clamp(3.5rem,13vw,7.5rem)]">
-        Work<span className="text-accent">outs</span>
+        {page ? (
+          <>
+            {page.name} <span className="text-accent">workouts</span>
+          </>
+        ) : (
+          <>
+            Work<span className="text-accent">outs</span>
+          </>
+        )}
       </h1>
+
+      {!page && <CollectionLinks />}
 
       <search className="relative mb-10 block max-w-xl">
         <Icon
@@ -100,6 +121,28 @@ export function ListPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+/* A link to each collection's page, drawn in that page's tone. */
+function CollectionLinks() {
+  return (
+    <nav aria-label="More workouts" className="mb-8 flex max-w-xl flex-col gap-3">
+      {Object.entries(COLLECTION_PAGES).map(([id, p]) => (
+        <Link
+          key={id}
+          to={p.path}
+          data-tone={p.tone}
+          className="group flex items-center justify-between gap-4 rounded-card border border-accent bg-surface px-5 py-4 transition hover:bg-raised"
+        >
+          <span className="font-display text-3xl text-accent">{p.name} workouts</span>
+          <span className="flex items-center gap-1.5 text-sm text-muted">
+            {onPage(workouts, id as Collection).length} workouts
+            <Icon as={ChevronRight} size={18} className="text-accent transition group-hover:translate-x-0.5" />
+          </span>
+        </Link>
+      ))}
+    </nav>
   );
 }
 

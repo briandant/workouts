@@ -82,6 +82,14 @@ describe('workouts MCP server', () => {
     expect(r.error).toBe(true);
   });
 
+  it('moves a workout onto a collection page and back', async () => {
+    await call('create_workout', { ...core, collection: 'hers' });
+    expect((await call('get_workout', { workoutId: 'core-burner' })).body).toContain('Collection: hers');
+    const r = await call('update_workout_details', { workoutId: 'core-burner', collection: null });
+    expect(r.error).toBe(false);
+    expect(r.body).not.toContain('Collection:');
+  });
+
   it('rejects path-traversal ids', async () => {
     const r = await call('get_workout', { workoutId: '../package' });
     expect(r.error).toBe(true);

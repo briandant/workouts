@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import type { Collection } from '@workouts/core';
+import { COLLECTION_PAGES } from './components/workouts/collections.ts';
 import { DetailPage } from './pages/DetailPage.tsx';
 import { ListPage } from './pages/ListPage.tsx';
 import { NotFound } from './pages/NotFound.tsx';
@@ -11,6 +13,9 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<ListPage />} />
+      {Object.entries(COLLECTION_PAGES).map(([id, p]) => (
+        <Route key={id} path={p.path} element={<ListPage key={id} collection={id as Collection} />} />
+      ))}
       <Route path="/w/:id" element={<DetailPage />} />
       <Route path="/w/:id/play" element={<PlayerPage />} />
       {Styleguide && (

@@ -1,6 +1,7 @@
 /*
   Follow-along theme: dark + neon.
-  Near-black ground, one electric-lime accent for work, cyan for rest.
+  Near-black ground, one electric-lime accent for work, cyan for rest,
+  hot pink in place of lime on her workouts.
   Anton for display type and the timer; Inter for everything else.
 
   This file is the only place colors, fonts and radii are defined.
@@ -34,6 +35,11 @@
   --color-rest-hi: #86dcff;
   --color-rest-lo: #1fa9e6;
   --color-rest-bg: #06131b;
+
+  /* Her workouts: the same dark ground, hot pink instead of lime */
+  --color-hers: #ff5cb8;
+  --color-hers-hi: #ff8fcf;
+  --color-hers-lo: #e03a9a;
 
   --font-*: initial;
   --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
@@ -78,6 +84,14 @@
   --color-accent-hi: var(--color-rest-hi);
   --color-accent-lo: var(--color-rest-lo);
   --color-bg: var(--color-rest-bg);
+}
+
+/* Her tone: a subtree with data-tone="hers" (her workouts' pages) turns pink. Rests inside stay cyan. */
+[data-tone='hers'] {
+  --color-accent: var(--color-hers);
+  --color-accent-hi: var(--color-hers-hi);
+  --color-accent-lo: var(--color-hers-lo);
+  --shadow-glow: 0 0 0 1px var(--color-accent), 0 8px 32px -8px var(--color-accent);
 }
 
 @utility font-display {

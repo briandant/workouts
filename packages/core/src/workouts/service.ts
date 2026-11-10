@@ -4,6 +4,7 @@ import { slugify, uniqueId } from './ids.ts';
 import {
   Block,
   BlockInput,
+  Collection,
   Id,
   StepInput,
   Workout,
@@ -26,7 +27,9 @@ export const CreateWorkoutInput = WorkoutMeta.extend({
 }).strict();
 export type CreateWorkoutInput = z.infer<typeof CreateWorkoutInput>;
 
-export const WorkoutMetaPatch = WorkoutMeta.partial().strict();
+export const WorkoutMetaPatch = WorkoutMeta.partial()
+  .extend({ collection: Collection.nullable().optional().describe('null moves it back to the main list') })
+  .strict();
 export type WorkoutMetaPatch = z.infer<typeof WorkoutMetaPatch>;
 
 export const DuplicateInput = z.strictObject({ title: WorkoutMeta.shape.title, id: Id.optional() });
@@ -155,7 +158,10 @@ export class WorkoutService {
   updateWorkoutMeta(id: string, patch: WorkoutMetaPatch): Promise<Change> {
     const p = parse(WorkoutMetaPatch, patch, 'workout details');
     return this.change(id, (w) => {
-      Object.assign(w, p);
+      const { collection, ...rest } = p;
+      Object.assign(w, rest);
+      if (collection === null) delete w.collection;
+      else if (collection) w.collection = collection;
       return { message: `Updated ${Object.keys(p).join(', ') || 'nothing'} on "${id}"` };
     });
   }

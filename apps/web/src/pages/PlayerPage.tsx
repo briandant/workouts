@@ -9,6 +9,7 @@ import { Kicker } from '../components/ui/Kicker.tsx';
 import { Segments } from '../components/ui/Segments.tsx';
 import { Stat, StatGrid } from '../components/ui/Stat.tsx';
 import { Tag } from '../components/ui/Tag.tsx';
+import { homeOf } from '../components/workouts/collections.ts';
 import { findWorkout } from '../data/workouts.ts';
 import { isImage, youtubeEmbed } from '../player/media.ts';
 import * as P from '../player/player.ts';
@@ -92,7 +93,7 @@ function Player({ workout: w }: { workout: Workout }) {
     .join(' · ');
 
   return (
-    <div data-tone={rest ? 'rest' : 'work'} className="flex min-h-dvh flex-col bg-bg transition-colors duration-300">
+    <div data-tone={rest ? 'rest' : (homeOf(w).tone ?? 'work')} className="flex min-h-dvh flex-col bg-bg transition-colors duration-300">
       <div className="flex items-center gap-2 px-3 pt-3 sm:px-5">
         <Button variant="ghost" size="icon" onClick={exit} aria-label="Leave workout">
           <Icon as={X} />
@@ -260,8 +261,9 @@ function Shortcuts({ close }: { close: () => void }) {
 
 function Finished({ workout: w, steps, elapsedMs, again }: { workout: Workout; steps: PlayStep[]; elapsedMs: number; again: () => void }) {
   const moves = steps.filter((x) => !P.isRest(x)).length;
+  const home = homeOf(w);
   return (
-    <main className="grid min-h-dvh place-items-center px-4 py-10">
+    <main data-tone={home.tone} className="grid min-h-dvh place-items-center px-4 py-10">
       <div className="flex w-full max-w-md flex-col gap-6 rounded-card border border-accent bg-surface p-7 shadow-glow">
         <div className="flex flex-col gap-3">
           <Kicker>Workout complete</Kicker>
@@ -273,7 +275,7 @@ function Finished({ workout: w, steps, elapsedMs, again }: { workout: Workout; s
         </StatGrid>
         <div className="flex flex-wrap gap-3">
           <Link
-            to="/"
+            to={home.path}
             className="inline-flex h-12 flex-1 items-center justify-center rounded-md bg-accent px-4 font-display text-xl text-on-accent hover:bg-accent-hi active:bg-accent-lo"
           >
             Back to workouts

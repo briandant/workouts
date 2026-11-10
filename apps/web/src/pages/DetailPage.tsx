@@ -6,6 +6,7 @@ import { Icon } from '../components/ui/Icon.tsx';
 import { Kicker } from '../components/ui/Kicker.tsx';
 import { Segments } from '../components/ui/Segments.tsx';
 import { Stat, StatGrid } from '../components/ui/Stat.tsx';
+import { homeOf } from '../components/workouts/collections.ts';
 import { shape, stats } from '../components/workouts/shape.ts';
 import { findWorkout } from '../data/workouts.ts';
 import { unlock } from '../player/audio.ts';
@@ -18,6 +19,7 @@ export function DetailPage() {
   const w = findWorkout(id);
   if (!w) return <NotFound />;
   const s = stats(w);
+  const home = homeOf(w);
   const resume = loadResume(w.id);
 
   const play = (fresh: boolean) => {
@@ -26,10 +28,10 @@ export function DetailPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 pt-4 pb-20 sm:px-6">
-      <Link to="/" className="-ml-2 inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-medium text-muted hover:text-ink">
+    <div data-tone={home.tone} className="mx-auto w-full max-w-6xl px-4 pt-4 pb-20 sm:px-6">
+      <Link to={home.path} className="-ml-2 inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-medium text-muted hover:text-ink">
         <Icon as={ChevronLeft} size={18} />
-        All workouts
+        {home.label}
       </Link>
 
       <div className="mt-6 grid items-start gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">

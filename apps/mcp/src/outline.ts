@@ -12,6 +12,7 @@ import {
 export function outline(w: Workout): string {
   const s = summarize(w);
   const lines = [`${w.id}: ${w.title} (${w.focus} · ${w.level} · ~${formatMinutes(s.totalSeconds)})`, w.summary];
+  if (w.collection) lines.push(`Collection: ${w.collection} (own page, not the main list)`);
   if (w.equipment) lines.push(`Equipment: ${w.equipment.join(', ') || 'none'}`);
   for (const b of w.blocks) {
     const extra = [

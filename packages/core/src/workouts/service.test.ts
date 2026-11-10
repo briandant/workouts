@@ -76,6 +76,14 @@ describe('workouts', () => {
     expect((await svc.updateWorkoutMeta('kettlebell-strength', { equipment: [] })).workout.equipment).toEqual([]);
   });
 
+  it('puts a workout in a collection, and null takes it back out', async () => {
+    const { workout } = await svc.updateWorkoutMeta('kettlebell-strength', { collection: 'hers' });
+    expect(workout.collection).toBe('hers');
+    const back = await svc.updateWorkoutMeta('kettlebell-strength', { collection: null });
+    expect(back.workout).not.toHaveProperty('collection');
+    expect(back.workout.title).toBe(workout.title);
+  });
+
   it('duplicates a workout under a new id and title', async () => {
     const { workout } = await svc.duplicateWorkout('bodyweight-rounds', { title: 'Bodyweight Rounds II' });
     expect(workout.id).toBe('bodyweight-rounds-ii');

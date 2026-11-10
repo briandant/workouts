@@ -17,6 +17,11 @@ export const FOCUSES = ['HIIT', 'Strength', 'Circuit', 'Intervals', 'Mobility', 
 export const LEVELS = ['All levels', 'Beginner', 'Intermediate', 'Advanced'] as const;
 export const Focus = z.enum(FOCUSES);
 export const Level = z.enum(LEVELS);
+/** Workouts with a collection get their own page instead of the main list. */
+export const COLLECTIONS = ['hers'] as const;
+export const Collection = z
+  .enum(COLLECTIONS)
+  .describe('Show the workout on its own page instead of the main list. "hers": Her workouts, in pink.');
 
 const Name = z.string().trim().min(1).max(80);
 const Equipment = z
@@ -68,6 +73,7 @@ export const Workout = z.strictObject({
   title: z.string().trim().min(1).max(60),
   focus: Focus,
   level: Level,
+  collection: Collection.optional(),
   summary: z.string().trim().min(1).max(200),
   equipment: Equipment.optional(),
   blocks: z.array(Block),
@@ -75,6 +81,7 @@ export const Workout = z.strictObject({
 
 export type Focus = z.infer<typeof Focus>;
 export type Level = z.infer<typeof Level>;
+export type Collection = z.infer<typeof Collection>;
 export type TimedStep = z.infer<typeof TimedStep>;
 export type RepsStep = z.infer<typeof RepsStep>;
 export type SetsStep = z.infer<typeof SetsStep>;
@@ -102,5 +109,5 @@ export const BlockInput = z.strictObject({
 });
 export type BlockInput = z.infer<typeof BlockInput>;
 
-export const WorkoutMeta = Workout.pick({ title: true, focus: true, level: true, summary: true, equipment: true });
+export const WorkoutMeta = Workout.pick({ title: true, focus: true, level: true, collection: true, summary: true, equipment: true });
 export type WorkoutMeta = z.infer<typeof WorkoutMeta>;
