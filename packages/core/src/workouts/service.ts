@@ -7,10 +7,12 @@ import {
   Collection,
   Id,
   StepInput,
+  TAGS,
   Workout,
   WorkoutMeta,
   Step,
   type StepKind,
+  type Tag,
 } from './model.ts';
 import type { WorkoutRepository } from './repository.ts';
 
@@ -75,6 +77,13 @@ function insertAt<T extends { id: string }>(list: T[], items: T[], pos: Position
     if (i < 0) throw new WorkoutError(`No ${what} "${pos.afterId}" to insert after. ${what}s here: ${ids(list)}`);
     list.splice(i + 1, 0, ...items);
   } else list.push(...items);
+}
+
+/** Tags are kept in TAGS order, so files and the filter agree; [] removes the field. */
+function setTags(w: Workout, tags: Tag[] | undefined): void {
+  if (!tags) return;
+  if (tags.length) w.tags = TAGS.filter((t) => tags.includes(t));
+  else delete w.tags;
 }
 
 const ids = (list: { id: string }[]) => list.map((x) => x.id).join(', ') || '(none)';
@@ -147,19 +156,21 @@ export class WorkoutService {
   /* Workouts */
 
   async createWorkout(input: CreateWorkoutInput): Promise<Change> {
-    const { id, blocks = [], ...meta } = parse(CreateWorkoutInput, input, 'workout');
+    const { id, blocks = [], tags, ...meta } = parse(CreateWorkoutInput, input, 'workout');
     const workout: Workout = { id: id ?? slugify(meta.title), ...meta, blocks: [] };
+    setTags(workout, tags);
     await this.assertFreeId(workout.id);
     for (const b of blocks) workout.blocks.push(this.makeBlock(workout, b));
     const created = [workout.id, ...workout.blocks.flatMap((b) => [b.id, ...b.steps.map((s) => s.id)])];
     return this.save(workout, `Created workout "${workout.id}"`, created);
   }
 
-  updateWorkoutMeta(id: string, patch: WorkoutMetaPatch): Promise<Change> {
+  async updateWorkoutMeta(id: string, patch: WorkoutMetaPatch): Promise<Change> {
     const p = parse(WorkoutMetaPatch, patch, 'workout details');
     return this.change(id, (w) => {
-      const { collection, ...rest } = p;
+      const { collection, tags, ...rest } = p;
       Object.assign(w, rest);
+      setTags(w, tags);
       if (collection === null) delete w.collection;
       else if (collection) w.collection = collection;
       return { message: `Updated ${Object.keys(p).join(', ') || 'nothing'} on "${id}"` };

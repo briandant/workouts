@@ -84,6 +84,32 @@ describe('workouts', () => {
     expect(back.workout.title).toBe(workout.title);
   });
 
+  it('tags a workout in tag-list order, replacing the old tags, and [] removes them', async () => {
+    await svc.updateWorkoutMeta('kettlebell-strength', { tags: ['Prenatal'] });
+    const { workout } = await svc.updateWorkoutMeta('kettlebell-strength', { tags: ['HIIT', 'Cervical'] });
+    expect(workout.tags).toEqual(['Cervical', 'HIIT']);
+    const none = await svc.updateWorkoutMeta('kettlebell-strength', { tags: [] });
+    expect(none.workout).not.toHaveProperty('tags');
+  });
+
+  it('creates a workout with its tags in tag-list order', async () => {
+    const { workout } = await svc.createWorkout({
+      title: 'Neck Burner',
+      focus: 'HIIT',
+      level: 'Beginner',
+      summary: 'x',
+      tags: ['HIIT', 'Cervical'],
+    });
+    expect(workout.tags).toEqual(['Cervical', 'HIIT']);
+    const untagged = await svc.createWorkout({ title: 'Plain', focus: 'HIIT', level: 'Beginner', summary: 'x', tags: [] });
+    expect(untagged.workout).not.toHaveProperty('tags');
+  });
+
+  it('rejects an unknown or repeated tag', async () => {
+    await expect(svc.updateWorkoutMeta('kettlebell-strength', { tags: ['Yoga' as never] })).rejects.toThrow(/tags/);
+    await expect(svc.updateWorkoutMeta('kettlebell-strength', { tags: ['HIIT', 'HIIT'] })).rejects.toThrow(/more than once/);
+  });
+
   it('duplicates a workout under a new id and title', async () => {
     const { workout } = await svc.duplicateWorkout('bodyweight-rounds', { title: 'Bodyweight Rounds II' });
     expect(workout.id).toBe('bodyweight-rounds-ii');

@@ -3,7 +3,7 @@ import { Workout, type Block, type Step } from './model.ts';
 
 /** Canonical key order on disk; every model field must be listed or it is dropped on write. */
 export const FILE_KEYS = {
-  workout: ['id', 'title', 'focus', 'level', 'collection', 'summary', 'equipment', 'blocks'],
+  workout: ['id', 'title', 'focus', 'level', 'collection', 'tags', 'summary', 'equipment', 'blocks'],
   block: ['id', 'name', 'rounds', 'restBetweenRounds', 'steps'],
   step: ['id', 'kind', 'name', 'sets', 'reps', 'duration', 'rest', 'perSide', 'cue', 'video'],
 } as const;

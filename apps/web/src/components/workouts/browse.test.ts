@@ -1,9 +1,10 @@
-import { FOCUSES } from '@workouts/core';
+import { FOCUSES, type Tag, type Workout } from '@workouts/core';
 import { describe, expect, it } from 'vitest';
 import { workouts } from '../../data/workouts.ts';
-import { groupByFocus, matches } from './browse.ts';
+import { groupByFocus, hasTag, matches, readTag, tagCounts } from './browse.ts';
 
 const byId = (id: string) => workouts.find((w) => w.id === id)!;
+const tagged = (id: string, ...tags: Tag[]): Workout => ({ ...byId(id), tags });
 
 describe('matches', () => {
   it('matches everything on an empty query', () => {
@@ -36,5 +37,33 @@ describe('groupByFocus', () => {
     expect(seen).toEqual([...seen].sort((a, b) => a - b));
     const mobility = groups.find((g) => g.focus === 'Mobility')!.workouts.map((w) => w.title);
     expect(mobility).toEqual([...mobility].sort((a, b) => a.localeCompare(b)));
+  });
+});
+
+describe('tags', () => {
+  it('search matches a workout’s tags', () => {
+    expect(matches(tagged('tabata', 'Cervical'), 'cervical')).toBe(true);
+    expect(matches(tagged('tabata'), 'cervical')).toBe(false);
+  });
+
+  it('counts the tags on a list of workouts in tag order, leaving out unused ones', () => {
+    const ws = [tagged('tabata', 'HIIT'), tagged('kettlebell-strength', 'Prenatal', 'HIIT'), tagged('seven-minute')];
+    expect(tagCounts(ws)).toEqual([
+      { tag: 'HIIT', count: 2 },
+      { tag: 'Prenatal', count: 1 },
+    ]);
+  });
+
+  it('keeps every workout when no tag is chosen, else only the tagged ones', () => {
+    expect(hasTag(tagged('tabata'), undefined)).toBe(true);
+    expect(hasTag(tagged('tabata', 'HIIT'), 'HIIT')).toBe(true);
+    expect(hasTag(tagged('tabata', 'Prenatal'), 'HIIT')).toBe(false);
+  });
+
+  it('reads a tag from the URL, ignoring anything that is not a tag', () => {
+    expect(readTag('Low back')).toBe('Low back');
+    expect(readTag('low back')).toBeUndefined();
+    expect(readTag('Yoga')).toBeUndefined();
+    expect(readTag(null)).toBeUndefined();
   });
 });

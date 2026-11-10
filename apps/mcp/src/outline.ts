@@ -8,11 +8,16 @@ import {
   type Workout,
 } from '@workouts/core';
 
+const headline = (w: Workout) => `${w.id}: ${w.title} (${w.focus} · ${w.level} · ~${formatMinutes(summarize(w).totalSeconds)})`;
+
+/** One line per workout, for list_workouts. */
+export const listLine = (w: Workout) => `${headline(w)}${w.tags ? `  · tags: ${w.tags.join(', ')}` : ''}`;
+
 /** A compact, id-annotated view of a workout, so Claude can address blocks and steps by id. */
 export function outline(w: Workout): string {
-  const s = summarize(w);
-  const lines = [`${w.id}: ${w.title} (${w.focus} · ${w.level} · ~${formatMinutes(s.totalSeconds)})`, w.summary];
+  const lines = [headline(w), w.summary];
   if (w.collection) lines.push(`Collection: ${w.collection} (own page, not the main list)`);
+  if (w.tags) lines.push(`Tags: ${w.tags.join(', ')}`);
   if (w.equipment) lines.push(`Equipment: ${w.equipment.join(', ') || 'none'}`);
   for (const b of w.blocks) {
     const extra = [

@@ -63,6 +63,40 @@ describe('list', () => {
     expect(screen.getByText(/no workouts match/i)).toBeInTheDocument();
   });
 
+  it('filters by tag, keeping the tag in the URL alongside the search', () => {
+    renderAt('/');
+    const filter = screen.getByRole('group', { name: /filter by tag/i });
+    const chip = (name: RegExp) => within(filter).getByRole('button', { name });
+    expect(chip(/^all/i)).toHaveAttribute('aria-pressed', 'true');
+
+    fireEvent.click(chip(/^cervical/i));
+    expect(chip(/^cervical/i)).toHaveAttribute('aria-pressed', 'true');
+    expect(chip(/^all/i)).toHaveAttribute('aria-pressed', 'false');
+    const cervical = main.filter((w) => w.tags?.includes('Cervical'));
+    expect(cervical.length).toBeGreaterThan(1);
+    for (const w of main) expect(Boolean(screen.queryByText(w.title))).toBe(cervical.includes(w));
+    expect(screen.getByTestId('search')).toHaveTextContent('?tag=Cervical');
+
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'pettibon' } });
+    expect(screen.getByText('Cervical PM')).toBeInTheDocument();
+    expect(screen.queryByText('Cervical AM')).not.toBeInTheDocument();
+    expect(screen.getByTestId('search')).toHaveTextContent(/tag=Cervical/);
+    expect(screen.getByTestId('search')).toHaveTextContent(/q=pettibon/);
+
+    fireEvent.click(chip(/^all/i));
+    expect(screen.getByTestId('search')).toHaveTextContent(/^\?q=pettibon$/);
+  });
+
+  it('clears the tag filter when the chosen tag is pressed again', () => {
+    renderAt('/');
+    const hiit = () => within(screen.getByRole('group', { name: /filter by tag/i })).getByRole('button', { name: /^hiit/i });
+    fireEvent.click(hiit());
+    expect(screen.queryByText('Kettlebell Strength')).not.toBeInTheDocument();
+    fireEvent.click(hiit());
+    expect(hiit()).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByText('Kettlebell Strength')).toBeInTheDocument();
+  });
+
   it('focuses search with / and clears it with Escape', () => {
     renderAt('/');
     const search = screen.getByRole('searchbox');
@@ -93,6 +127,13 @@ describe('detail', () => {
   it('says when a workout needs no equipment', () => {
     renderAt('/w/tabata');
     expect(screen.getByRole('region', { name: /you.ll need/i })).toHaveTextContent(/no equipment/i);
+  });
+
+  it('links each tag to its list, filtered by that tag', () => {
+    renderAt('/w/cervical-am');
+    fireEvent.click(screen.getByRole('link', { name: 'Cervical' }));
+    expect(screen.getByTestId('path')).toHaveTextContent(/^\/$/);
+    expect(screen.getByTestId('search')).toHaveTextContent('?tag=Cervical');
   });
 
   it('shows not found for an unknown workout', () => {
@@ -165,6 +206,13 @@ describe('player keyboard', () => {
 
 describe('her workouts', () => {
   const hers = workouts.filter((w) => w.collection === 'hers');
+
+  it('offers only the tags on her page in its filter', () => {
+    renderAt('/hers');
+    const filter = screen.getByRole('group', { name: /filter by tag/i });
+    expect(within(filter).getByRole('button', { name: /^prenatal/i })).toBeInTheDocument();
+    expect(within(filter).queryByRole('button', { name: /^calisthenics/i })).not.toBeInTheDocument();
+  });
   const mine = workouts.filter((w) => !w.collection);
   const tone = (el: HTMLElement) => el.closest('[data-tone]')?.getAttribute('data-tone');
 
