@@ -30,16 +30,19 @@ beforeEach(() => vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'pe
 afterEach(() => vi.useRealTimers());
 
 describe('list', () => {
-  it('shows every workout from /workouts', () => {
+  // The main list holds workouts without a collection; collections get their own page.
+  const main = workouts.filter((w) => !w.collection);
+
+  it('shows every main-list workout from /workouts', () => {
     renderAt('/');
-    expect(workouts.length).toBeGreaterThanOrEqual(5);
-    for (const w of workouts) expect(screen.getByText(w.title)).toBeInTheDocument();
+    expect(main.length).toBeGreaterThanOrEqual(5);
+    for (const w of main) expect(screen.getByText(w.title)).toBeInTheDocument();
   });
 
   it('groups workouts under a heading per focus', () => {
     renderAt('/');
     const mobility = screen.getByRole('region', { name: /mobility/i });
-    for (const w of workouts.filter((w) => w.focus === 'Mobility'))
+    for (const w of main.filter((w) => w.focus === 'Mobility'))
       expect(within(mobility).getByText(w.title)).toBeInTheDocument();
     expect(within(mobility).queryByText('Tabata Intervals')).not.toBeInTheDocument();
   });
