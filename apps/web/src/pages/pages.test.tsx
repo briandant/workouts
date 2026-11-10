@@ -162,3 +162,49 @@ describe('player keyboard', () => {
     expect(screen.getByText('Paused')).toBeInTheDocument();
   });
 });
+
+describe('her workouts', () => {
+  const hers = workouts.filter((w) => w.collection === 'hers');
+  const mine = workouts.filter((w) => !w.collection);
+  const tone = (el: HTMLElement) => el.closest('[data-tone]')?.getAttribute('data-tone');
+
+  it('keeps her workouts off the main list and links to her page in pink', () => {
+    renderAt('/');
+    expect(hers.length).toBeGreaterThan(0);
+    for (const w of hers) expect(screen.queryByText(w.title)).not.toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /her workouts/i });
+    expect(tone(link)).toBe('hers');
+    fireEvent.click(link);
+    expect(screen.getByTestId('path')).toHaveTextContent('/hers');
+  });
+
+  it('lists only her workouts, in pink, with a way back', () => {
+    renderAt('/hers');
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent(/her workouts/i);
+    expect(tone(heading)).toBe('hers');
+    for (const w of hers) expect(screen.getByText(w.title)).toBeInTheDocument();
+    for (const w of mine) expect(screen.queryByText(w.title)).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('link', { name: /^workouts$/i }));
+    expect(screen.getByTestId('path')).toHaveTextContent(/^\/$/);
+  });
+
+  it('shows her workout in pink and goes back to her page', () => {
+    renderAt(`/w/${hers[0]!.id}`);
+    expect(tone(screen.getByRole('heading', { level: 1 }))).toBe('hers');
+    fireEvent.click(screen.getByRole('link', { name: /her workouts/i }));
+    expect(screen.getByTestId('path')).toHaveTextContent('/hers');
+  });
+
+  it('plays her workout in pink, with rests still cyan', () => {
+    renderAt(`/w/${hers[0]!.id}/play`, { fresh: true });
+    expect(tone(screen.getByText('Get ready'))).toBe('rest');
+    key('ArrowRight');
+    expect(tone(screen.getByText(counter()!))).toBe('hers');
+  });
+
+  it('keeps the main workouts green', () => {
+    renderAt('/w/tabata');
+    expect(tone(screen.getByRole('heading', { level: 1 }))).not.toBe('hers');
+  });
+});

@@ -1,0 +1,80 @@
+{
+  "id": "prenatal-evening-wind-down",
+  "title": "Prenatal Evening Wind-Down",
+  "focus": "Recovery",
+  "level": "All levels",
+  "collection": "hers",
+  "summary": "Before bed. Eases swollen ankles, leg cramps, tingly hands and a stiff back, then slow breathing to settle for sleep. Seated propped up and side-lying only.",
+  "equipment": [
+    "Bed or couch",
+    "Pillows",
+    "Towel"
+  ],
+  "blocks": [
+    {
+      "id": "propped-up",
+      "name": "Propped Up",
+      "steps": [
+        {
+          "id": "ankle-pumps-circles",
+          "kind": "timed",
+          "name": "Ankle Pumps & Circles",
+          "duration": 60,
+          "cue": "Sit propped up against pillows, feet raised on a pillow. Point and flex the feet, then circle the ankles both ways. Helps move swelling out of the feet and ankles."
+        },
+        {
+          "id": "towel-calf-stretch",
+          "kind": "timed",
+          "name": "Towel Calf Stretch",
+          "duration": 30,
+          "perSide": true,
+          "cue": "One leg long, a towel around the ball of that foot. Gently draw the toes toward you until the calf stretches. Eases night leg cramps. Keep the knee soft if the back of it pulls."
+        },
+        {
+          "id": "wrist-forearm-stretch",
+          "kind": "timed",
+          "name": "Wrist & Forearm Stretch",
+          "duration": 30,
+          "perSide": true,
+          "cue": "Arm straight in front, palm up. With the other hand, ease the fingers down and back until the forearm stretches. Mild only; stop if the hand tingles more."
+        },
+        {
+          "id": "seated-side-reach",
+          "kind": "timed",
+          "name": "Seated Side Reach",
+          "duration": 30,
+          "perSide": true,
+          "cue": "Sit tall, one hand on the bed beside you. Reach the other arm up and over, breathing into the stretched side to make room under the ribs."
+        },
+        {
+          "id": "neck-side-stretch",
+          "kind": "timed",
+          "name": "Neck Side Stretch",
+          "duration": 30,
+          "perSide": true,
+          "cue": "Sit tall, tip one ear toward that shoulder and let the other shoulder sink. Breathe slowly. Let gravity do it; no pulling on the head."
+        }
+      ]
+    },
+    {
+      "id": "side-lying",
+      "name": "Side-Lying",
+      "steps": [
+        {
+          "id": "side-lying-pelvic-rocks",
+          "kind": "timed",
+          "name": "Side-Lying Pelvic Rocks",
+          "duration": 60,
+          "cue": "Lie on your left side, a pillow between the knees. Gently tuck and untuck the pelvis in tiny, slow rocks. Eases a stiff low back before sleep."
+        },
+        {
+          "id": "sleepy-breathing",
+          "kind": "timed",
+          "name": "Sleepy Breathing",
+          "duration": 180,
+          "cue": "Pillows between the knees, under the belly and behind the back. Breathe in for 4, out for 6–8. With each breath out let the jaw, belly and pelvic floor soften. Drift off if you like."
+        }
+      ]
+    }
+  ]
+}
