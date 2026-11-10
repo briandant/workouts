@@ -1,0 +1,136 @@
+{
+  "id": "prenatal-strength-keeper",
+  "title": "Prenatal Strength Keeper",
+  "focus": "Strength",
+  "level": "All levels",
+  "summary": "2–3x/week. Keeps legs, back and core strong with moderate weights. You should be able to talk throughout. Exhale on effort; stop if the belly domes or the pelvis hurts.",
+  "equipment": [
+    "Dumbbells (light–moderate)",
+    "Resistance band",
+    "Bench",
+    "Cable machine (optional)",
+    "Treadmill or bike"
+  ],
+  "blocks": [
+    {
+      "id": "warm-up",
+      "name": "Warm-Up",
+      "steps": [
+        {
+          "id": "easy-walk-or-bike",
+          "kind": "timed",
+          "name": "Easy Walk or Bike",
+          "duration": 180,
+          "cue": "Treadmill walk or upright bike at an easy, chatty pace, no incline. Pick whichever the pelvis likes better today."
+        },
+        {
+          "id": "standing-cat-cow",
+          "kind": "timed",
+          "name": "Standing Cat-Cow",
+          "duration": 45,
+          "cue": "Feet hip-width, knees soft, hands on thighs. Exhale and round the back; inhale and gently arch, chest forward. Slow, comfortable range."
+        },
+        {
+          "id": "band-pull-aparts",
+          "kind": "reps",
+          "name": "Band Pull-Aparts",
+          "reps": 12,
+          "cue": "Hold a light band at chest height, arms straight. Exhale and pull it apart toward the chest, squeezing the shoulder blades back and down. Ribs stay down."
+        },
+        {
+          "id": "box-squat-to-bench",
+          "kind": "reps",
+          "name": "Box Squat to Bench",
+          "reps": 8,
+          "cue": "Feet hip-width, toes slightly out. Sit back to touch the bench lightly, then stand, exhaling on the way up. No weight yet; just groove the pattern."
+        }
+      ]
+    },
+    {
+      "id": "strength-circuit",
+      "name": "Strength Circuit",
+      "rounds": 2,
+      "restBetweenRounds": 90,
+      "steps": [
+        {
+          "id": "goblet-box-squat",
+          "kind": "reps",
+          "name": "Goblet Box Squat",
+          "reps": 10,
+          "cue": "Hold a dumbbell at the chest, feet hip-width (not wide). Sit back to the bench and stand, exhaling as you rise. Use a weight you could lift 15 times; finish with reps to spare."
+        },
+        {
+          "id": "incline-push-up",
+          "kind": "reps",
+          "name": "Incline Push-Up",
+          "reps": 10,
+          "cue": "Hands on a bench or a Smith bar at hip height or higher, body in one line. Lower the chest toward the edge and press away, exhaling as you push. Raise the hands if the belly domes."
+        },
+        {
+          "id": "seated-cable-row",
+          "kind": "reps",
+          "name": "Seated Cable Row",
+          "reps": 12,
+          "cue": "Sit tall, knees soft, and pull the handle to the lower ribs, squeezing the shoulder blades together. Exhale on the pull. No cable? Anchor a band at chest height and row standing."
+        },
+        {
+          "id": "dumbbell-romanian-deadlift",
+          "kind": "reps",
+          "name": "Dumbbell Romanian Deadlift",
+          "reps": 10,
+          "cue": "Feet hip-width, light dumbbells in front of the thighs. Soft knees, push the hips back and slide the weights to just below the knees, back long. Exhale and squeeze the glutes to stand. Stop if the low back aches."
+        },
+        {
+          "id": "pallof-press",
+          "kind": "reps",
+          "name": "Pallof Press",
+          "reps": 8,
+          "perSide": true,
+          "cue": "Band or cable at chest height, stand side-on, feet hip-width. Hold the handle at the breastbone, exhale and press straight out, resisting the twist. Hold 2 s, bring it back."
+        },
+        {
+          "id": "seated-band-abduction",
+          "kind": "reps",
+          "name": "Seated Band Abduction",
+          "reps": 15,
+          "cue": "Sit on the bench edge, band just above the knees, feet hip-width. Press the knees out a few inches against the band and slowly return. Small range; skip it if the front of the pelvis hurts."
+        },
+        {
+          "id": "farmer-carry",
+          "kind": "timed",
+          "name": "Farmer Carry",
+          "duration": 40,
+          "cue": "A dumbbell in each hand, stand tall, shoulders down. Walk with short, even steps and breathe normally. Short steps keep the pelvis happy."
+        }
+      ]
+    },
+    {
+      "id": "cool-down",
+      "name": "Cool-Down",
+      "steps": [
+        {
+          "id": "wall-calf-stretch",
+          "kind": "timed",
+          "name": "Wall Calf Stretch",
+          "duration": 30,
+          "perSide": true,
+          "cue": "Hands on a wall, one foot back, heel down, back knee straight. Lean in until the calf stretches. Helps with night leg cramps."
+        },
+        {
+          "id": "doorway-chest-stretch",
+          "kind": "timed",
+          "name": "Doorway Chest Stretch",
+          "duration": 45,
+          "cue": "Forearms on a door frame or rack upright at shoulder height. Step one foot through gently until the chest opens. Mild stretch; back off if the hands tingle."
+        },
+        {
+          "id": "seated-breathing",
+          "kind": "timed",
+          "name": "Seated Breathing",
+          "duration": 60,
+          "cue": "Sit tall on the bench, hands on the lower ribs. Breathe in through the nose so the ribs widen, then a long, slow breath out. Let the heart rate settle."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "prenatal-back-pelvis-relief",
+  "title": "Prenatal Back & Pelvis Relief",
+  "focus": "Recovery",
+  "level": "All levels",
+  "summary": "Daily, for low back and pelvic pain in late pregnancy. Gentle range only, nothing flat on the back. Stop for bleeding, contractions, leaking fluid or dizziness.",
+  "equipment": [
+    "Mat",
+    "Pillows (3–4)",
+    "Wall",
+    "Chair or bench"
+  ],
+  "blocks": [
+    {
+      "id": "standing-seated",
+      "name": "Standing & Seated",
+      "steps": [
+        {
+          "id": "wall-pelvic-tilts",
+          "kind": "reps",
+          "name": "Wall Pelvic Tilts",
+          "reps": 10,
+          "cue": "Back against a wall, feet a small step forward, knees soft. Exhale and gently press the low back toward the wall; inhale and let it go. Small, slow, pain-free. Belly and glutes relaxed."
+        },
+        {
+          "id": "standing-side-bend",
+          "kind": "timed",
+          "name": "Standing Side Bend",
+          "duration": 30,
+          "perSide": true,
+          "cue": "Feet hip-width, one hand on the wall or a chair. Reach the other arm up and over, leaning away until the side of the waist opens. Both feet stay grounded. Breathe into the side ribs."
+        },
+        {
+          "id": "seated-pillow-squeeze",
+          "kind": "reps",
+          "name": "Seated Pillow Squeeze",
+          "reps": 8,
+          "cue": "Sit tall on a chair, feet flat, a folded pillow between the knees. Squeeze gently for 5 s, then let go fully. Often eases pain at the front of the pelvis; never squeeze hard."
+        },
+        {
+          "id": "seated-figure-4-stretch",
+          "kind": "timed",
+          "name": "Seated Figure-4 Stretch",
+          "duration": 45,
+          "perSide": true,
+          "cue": "Sit tall, rest one ankle on the other knee, then hinge forward from the hips until the outer hip and buttock stretch. Mild only. Skip it if it pinches the front of the pelvis."
+        }
+      ]
+    },
+    {
+      "id": "hands-knees",
+      "name": "Hands & Knees",
+      "steps": [
+        {
+          "id": "cat-cow",
+          "kind": "timed",
+          "name": "Cat-Cow",
+          "duration": 60,
+          "cue": "Hands under shoulders, knees under hips on a folded pillow. Inhale, chest forward and belly gently drops; exhale, round the back up. Slow and small, moving from the pelvis. Belly stays soft."
+        },
+        {
+          "id": "hip-circles-on-all-fours",
+          "kind": "timed",
+          "name": "Hip Circles on All Fours",
+          "duration": 60,
+          "cue": "From hands and knees, draw slow circles with the hips, as if stirring a big pot. Switch direction halfway. Keep it smooth and inside a comfortable range."
+        },
+        {
+          "id": "thread-the-needle",
+          "kind": "timed",
+          "name": "Thread the Needle",
+          "duration": 30,
+          "perSide": true,
+          "cue": "From hands and knees, slide one arm under the other along the floor and rest that shoulder and cheek down. Hips stay over the knees. Breathe into the upper back."
+        },
+        {
+          "id": "wide-knee-child-s-pose",
+          "kind": "timed",
+          "name": "Wide-Knee Child's Pose",
+          "duration": 60,
+          "cue": "Big toes together, knees as wide as the belly needs, sit back toward the heels. Rest your head on stacked pillows. Breathe into the low back and let the pelvic floor soften. Narrow the knees if the pelvis aches."
+        }
+      ]
+    },
+    {
+      "id": "side-lying",
+      "name": "Side-Lying",
+      "steps": [
+        {
+          "id": "side-lying-open-book",
+          "kind": "reps",
+          "name": "Side-Lying Open Book",
+          "reps": 6,
+          "perSide": true,
+          "cue": "On your side, head on a pillow, a pillow between bent knees, arms straight out front. Sweep the top arm up and open behind you, eyes following the hand. Knees stay stacked. Only as far as is easy."
+        },
+        {
+          "id": "side-lying-breathing",
+          "kind": "timed",
+          "name": "Side-Lying Breathing",
+          "duration": 120,
+          "cue": "Rest on your left side, pillows between the knees and under the belly. Breathe in through the nose so the belly and back ribs widen; breathe out slowly. Let the jaw, glutes and pelvic floor go soft."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "prenatal-partner-practice",
+  "title": "Prenatal Partner Practice",
+  "focus": "Recovery",
+  "level": "All levels",
+  "summary": "Together: supported movement, comfort touch to rehearse for labor (and ease back pain now) and shared breathing. She leads: more, less or stop, any time.",
+  "equipment": [
+    "A partner",
+    "Exercise ball (or a bench)",
+    "Pillows",
+    "Mat"
+  ],
+  "blocks": [
+    {
+      "id": "move-together",
+      "name": "Move Together",
+      "steps": [
+        {
+          "id": "slow-dance-sway",
+          "kind": "timed",
+          "name": "Slow Dance Sway",
+          "duration": 120,
+          "cue": "Face each other, her arms around your neck, leaning as much weight on you as she likes. Sway the hips side to side and in slow circles. Put on music; she sets the pace. A classic labor position."
+        },
+        {
+          "id": "partner-supported-squat",
+          "kind": "sets",
+          "name": "Partner-Supported Squat",
+          "sets": 3,
+          "duration": 30,
+          "rest": 30,
+          "cue": "Face each other and hold forearms, her feet about hip-width. She sits back and down as low as is comfortable while you lean back to counterbalance. She stands with an exhale. Stop if the pelvis hurts."
+        }
+      ]
+    },
+    {
+      "id": "comfort-touch",
+      "name": "Comfort Touch",
+      "steps": [
+        {
+          "id": "sacral-pressure",
+          "kind": "timed",
+          "name": "Sacral Pressure",
+          "duration": 90,
+          "cue": "She leans forward over the ball, bench or counter. Put the heel of your hand on the flat bone just above her tailbone and lean in with steady pressure as she breathes out. Ask: more, less, higher, lower?"
+        },
+        {
+          "id": "double-hip-squeeze",
+          "kind": "reps",
+          "name": "Double Hip Squeeze",
+          "reps": 5,
+          "cue": "She leans forward. Palms on the fleshy part of her buttocks, press in toward each other and slightly up for one slow breath, then release. Gentle for now; she directs. Skip it if it hurts her pelvis."
+        },
+        {
+          "id": "side-lying-back-rub",
+          "kind": "timed",
+          "name": "Side-Lying Back Rub",
+          "duration": 180,
+          "cue": "She lies on her left side, pillows between the knees and under the belly. Long strokes down the muscles beside the spine (never on it), then slow thumb circles over the buttocks. Steady and slow."
+        }
+      ]
+    },
+    {
+      "id": "breathe-together",
+      "name": "Breathe Together",
+      "steps": [
+        {
+          "id": "back-to-back-breathing",
+          "kind": "timed",
+          "name": "Back-to-Back Breathing",
+          "duration": 120,
+          "cue": "Sit back to back on a mat or bench. Breathe slowly into each other's backs, in for 4 and out for 6. Match her rhythm, not yours."
+        }
+      ]
+    }
+  ]
+}

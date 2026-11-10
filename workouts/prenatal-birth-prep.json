@@ -1,0 +1,85 @@
+{
+  "id": "prenatal-birth-prep",
+  "title": "Prenatal Birth Prep: Hips & Pelvic Floor",
+  "focus": "Mobility",
+  "level": "All levels",
+  "summary": "Most days. Practices relaxing the pelvic floor, opening the hips and labor breathing. Upright and side-lying only; ease off anything that pinches the pelvis.",
+  "equipment": [
+    "Exercise ball (or a bench)",
+    "Yoga block or low step",
+    "Pillows",
+    "Mat",
+    "Counter or rack to hold"
+  ],
+  "blocks": [
+    {
+      "id": "breath-pelvic-floor",
+      "name": "Breath & Pelvic Floor",
+      "steps": [
+        {
+          "id": "pelvic-floor-breathing",
+          "kind": "timed",
+          "name": "Pelvic Floor Breathing",
+          "duration": 120,
+          "cue": "Sit on the ball or a bench edge, feet wide and flat, hands on the lower ribs. Inhale through the nose: ribs widen, belly fills, pelvic floor softens and drops toward the seat. Exhale slowly; let it rise on its own."
+        },
+        {
+          "id": "lift-let-go",
+          "kind": "reps",
+          "name": "Lift & Let Go",
+          "reps": 6,
+          "cue": "Lightly lift the pelvic floor (about a third of max) for 3 s, then let go for 10 s and feel it drop past where it started. The letting go is the exercise. If lifting adds tension, skip it and just release."
+        },
+        {
+          "id": "ball-pelvic-rocks-circles",
+          "kind": "timed",
+          "name": "Ball Pelvic Rocks & Circles",
+          "duration": 90,
+          "cue": "On the ball, rock the pelvis forward and back, then side to side, then slow circles both ways. Upper body quiet, jaw soft, breathing low. On a bench, do smaller tilts."
+        }
+      ]
+    },
+    {
+      "id": "hips-open",
+      "name": "Hips Open",
+      "steps": [
+        {
+          "id": "supported-squat",
+          "kind": "sets",
+          "name": "Supported Squat",
+          "sets": 3,
+          "duration": 30,
+          "rest": 30,
+          "cue": "Hold a counter or rack, feet a little wider than hips, toes out. Lower onto a yoga block or low step, heels down. Breathe into the pelvic floor and let it soften. Sit higher or narrow the feet if the pelvis hurts."
+        },
+        {
+          "id": "child-s-pose-breathing",
+          "kind": "timed",
+          "name": "Child's Pose Breathing",
+          "duration": 90,
+          "cue": "Knees as wide as is comfortable, sit back toward the heels, head on stacked pillows. Breathe into the back of the pelvis and feel the sit bones widen on each inhale. Let the pelvic floor go heavy."
+        },
+        {
+          "id": "forward-lean-over-the-ball",
+          "kind": "timed",
+          "name": "Forward Lean Over the Ball",
+          "duration": 90,
+          "cue": "Kneel on a pillow and drape your chest over the ball (or pillows stacked on a bench). Sway the hips side to side and in slow circles, breathing low and slow. A go-to labor position worth getting comfy in."
+        }
+      ]
+    },
+    {
+      "id": "birth-breathing",
+      "name": "Birth Breathing",
+      "steps": [
+        {
+          "id": "side-lying-labor-breath",
+          "kind": "timed",
+          "name": "Side-Lying Labor Breath",
+          "duration": 180,
+          "cue": "On your left side, a pillow between the knees. Breathe in for 4, then out slowly for 6–8 through a soft, open mouth, as if fogging a mirror. Let the jaw, shoulders and pelvic floor melt on every breath out."
+        }
+      ]
+    }
+  ]
+}
